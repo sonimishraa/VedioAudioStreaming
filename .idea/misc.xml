@@ -3,7 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/DELL/Documents/VedioAudioStreamingApp/app/src/main/res/layout/activity_login.xml" value="0.14739583333333334" />
+        <entry key="..\:/Users/DELL/Documents/VedioAudioStreamingApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/DELL/Documents/VedioAudioStreamingApp/app/src/main/res/layout/activity_meeting.xml" value="0.14739583333333334" />
+        <entry key="..\:/Users/DELL/Documents/VedioAudioStreamingApp/app/src/main/res/layout/activity_splash.xml" value="0.14895833333333333" />
+        <entry key="..\:/Users/DELL/Documents/VedioAudioStreamingApp/app/src/main/res/layout/activity_verify_number.xml" value="0.13620071684587814" />
+        <entry key="..\:/Users/DELL/Documents/VedioAudioStreamingApp/app/src/main/res/layout/content_main.xml" value="0.1" />
+        <entry key="..\:/Users/DELL/Documents/VedioAudioStreamingApp/app/src/main/res/layout/content_meeting.xml" value="0.14739583333333334" />
+        <entry key="..\:/Users/DELL/Documents/VedioAudioStreamingApp/app/src/main/res/layout/content_verify_number.xml" value="0.16302083333333334" />
         <entry key="..\:/Users/DELL/Documents/VedioAudioStreamingApp/app/src/main/res/layout/fragment_first.xml" value="0.16302083333333334" />
+        <entry key="..\:/Users/DELL/Documents/VedioAudioStreamingApp/app/src/main/res/layout/fragment_first2.xml" value="0.14739583333333334" />
+        <entry key="..\:/Users/DELL/Documents/VedioAudioStreamingApp/app/src/main/res/layout/fragment_home.xml" value="0.1" />
       </map>
     </option>
   </component>

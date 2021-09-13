@@ -1,4 +1,4 @@
-package com.iotric.vedioaudiostreamingapp.network
+package com.iotric.vedioaudiostreamingapp.tokennetwork
 
 
 data class Resource<out T>(val status: Status, val data: T?, val message: String?) {

@@ -1,7 +1,7 @@
 package com.iotric.vedioaudiostreamingapp.repository
 
 import com.iotric.vedioaudiostreamingapp.model.TokenResponse
-import com.iotric.vedioaudiostreamingapp.network.ServiceBuilder
+import com.iotric.vedioaudiostreamingapp.tokennetwork.ServiceBuilder
 import okhttp3.Request
 
 class HomeRepository {

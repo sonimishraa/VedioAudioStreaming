@@ -48,6 +48,8 @@ class SettingsStorePreferences(context: Context) {
             VIDEO_RESOLUTION_HEIGHT,
             VIDEO_RESOLUTION_WIDTH
         )
+
+        val AUTH_TOKEN = "authToken"
     }
 
     private val sharedPreferences = context.getSharedPreferences(
@@ -62,7 +64,8 @@ class SettingsStorePreferences(context: Context) {
         sharedPreferences.unregisterOnSharedPreferenceChangeListener(listener)
     }
 
-    private fun putString(key: String, value: String) {
+
+    private fun putString(key: String, value: String?) {
         sharedPreferences.edit {
             putString(key, value)
             commit()
@@ -96,6 +99,10 @@ class SettingsStorePreferences(context: Context) {
             commit()
         }
     }
+
+    var token: String?
+    get() = sharedPreferences.getString(AUTH_TOKEN,"")
+    set(value) = putString(AUTH_TOKEN,value)
 
     var enableSubscribeDegradation: Boolean
         get() = sharedPreferences.getBoolean(SUBSCRIBE_DEGRADATION, true)
@@ -159,7 +166,7 @@ class SettingsStorePreferences(context: Context) {
         set(value) = putString(LAST_USED_MEETING_URL, value)
 
     var environment: String
-        get() = sharedPreferences.getString(ENVIRONMENT, "prod-init")!!
+        get() = sharedPreferences.getString(ENVIRONMENT, "prod-in")!!
         set(value) = putString(ENVIRONMENT, value)
 
 

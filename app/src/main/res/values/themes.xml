@@ -1,9 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.VedioAudioStreamingApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.Tamasha.live" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/color_Secondry</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -14,12 +14,21 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.VedioAudioStreamingApp.NoActionBar">
+    <style name="Theme.Tamasha.live.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.VedioAudioStreamingApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Tamasha.live.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.VedioAudioStreamingApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.Tamasha.live.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="LoginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <item name="boxStrokeColor">@color/mtrl_textinput_color</item>
+    <item name="boxStrokeWidth">1dp</item>
+    <item name="boxCornerRadiusBottomEnd">2dp</item>
+    <item name="boxCornerRadiusBottomStart">2dp</item>
+    <item name="boxCornerRadiusTopEnd">2dp</item>
+    <item name="boxCornerRadiusTopStart">2dp</item>
+    </style>
 </resources>

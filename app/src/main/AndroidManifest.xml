@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.iotric.vedioaudiostreamingapp">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,16 +12,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VedioAudioStreamingApp">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.activity.SplashActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.VedioAudioStreamingApp.NoActionBar">
+            android:theme="@style/Theme.Tamasha.live.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.activity.VerifyNumberActivity"
+            android:exported="true"
+            android:label="@string/title_activity_verify_number"
+            android:theme="@style/Theme.Tamasha.live.NoActionBar" />
+        <activity
+            android:name=".ui.activity.LoginActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Tamasha.live.NoActionBar">
+        </activity>
+        <activity
+            android:name=".ui.meeting.MeetingActivity"
+            android:exported="true"
+            android:label="@string/title_activity_meeting"
+            android:theme="@style/Theme.Tamasha.live.NoActionBar"/>
+        <activity
+            android:name=".ui.home.HomeActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Tamasha.live.NoActionBar" />
     </application>
 
 </manifest>

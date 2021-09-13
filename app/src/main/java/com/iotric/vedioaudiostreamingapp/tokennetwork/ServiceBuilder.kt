@@ -1,4 +1,4 @@
-package com.iotric.vedioaudiostreamingapp.network
+package com.iotric.vedioaudiostreamingapp.tokennetwork
 
 import android.util.Log
 import com.google.gson.Gson

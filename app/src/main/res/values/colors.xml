@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="color_primaryDark">#FF000000</color>
+    <color name="color_Secondry">#161553</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -7,4 +9,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gray">#E5E5E5</color>
+    <color name="darkGray">#56546A</color>
+    <color name="buttonColor">#EC008C</color>
+    <color name="mtrl_textinput_color" tools:override="true">#FFFFFFFF</color>
+
 </resources>

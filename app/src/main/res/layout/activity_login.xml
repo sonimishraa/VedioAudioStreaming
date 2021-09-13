@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:orientation="vertical"
+    tools:context=".ui.activity.LoginActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="73dp"
+        app:srcCompat="@drawable/tm_logo" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_below="@id/imageView"
+        android:gravity="center"
+        android:text="Enter Your Mobile Number"
+        android:textColor="@color/white"
+        android:textSize="18dp" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layout_edit_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="22dp"
+        android:layout_below="@id/textView"
+        android:layout_marginEnd="22dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".3"
+            android:layout_marginRight="1dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_text_backgroud"
+                android:textSize="16dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:hint="@string/_91" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/layout_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_Number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_text_backgroud"
+                android:hint="@string/enter_mobile_no"
+                android:textSize="16dp"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+                android:gravity="center"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/referal_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_edit_number"
+        android:text="@string/by_tapping_next_you_will_receive_an_otp_code_via_sms_nmessage_and_data_charges_may_apply"
+        android:textColor="@color/darkGray"
+        android:gravity="center"
+        android:layout_marginTop="12dp"
+        android:textSize="12dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/referal_code"
+        android:background="@drawable/button_backgound"
+        android:text="@string/next"
+        android:textColor="@color/white"
+        android:layout_marginStart="59dp"
+        android:layout_marginEnd="59dp"
+        android:layout_marginTop="25dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/terms_conditions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/we_are_committed_to_safeguarding_the_privacy_of_our_users"
+        android:textColor="@color/darkGray"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:layout_marginStart="84dp"
+        android:layout_marginEnd="84dp"
+        android:layout_alignParentBottom="true"/>
+
+
+</RelativeLayout>
