@@ -1,4 +1,4 @@
-package com.iotric.vedioaudiostreamingapp
+package com.tamasha.vedioaudiostreamingapp
 
 import org.junit.Test
 

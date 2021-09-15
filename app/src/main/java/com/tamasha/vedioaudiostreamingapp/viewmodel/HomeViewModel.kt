@@ -8,10 +8,13 @@ import com.tamasha.vedioaudiostreamingapp.repository.HomeRepository
 import com.tamasha.vedioaudiostreamingapp.tokennetwork.Resource
 import com.tamasha.vedioaudiostreamingapp.tokennetwork.ServiceBuilder
 import com.tamasha.vedioaudiostreamingapp.util.crashlytics
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import okhttp3.Request
+import javax.inject.Inject
 
-class HomeViewModel : ViewModel() {
+@HiltViewModel
+class HomeViewModel @Inject constructor() : ViewModel() {
     private val repository = HomeRepository()
     val authTokenResponse = MutableLiveData<Resource<TokenResponse>>()
 

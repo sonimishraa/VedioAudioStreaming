@@ -23,12 +23,10 @@
 
     <style name="Theme.Tamasha.live.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="LoginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-    <item name="boxStrokeColor">@color/mtrl_textinput_color</item>
-    <item name="boxStrokeWidth">1dp</item>
-    <item name="boxCornerRadiusBottomEnd">2dp</item>
-    <item name="boxCornerRadiusBottomStart">2dp</item>
-    <item name="boxCornerRadiusTopEnd">2dp</item>
-    <item name="boxCornerRadiusTopStart">2dp</item>
+    <style name="LoginTextInputLayoutStyle" parent="Widget.Design.TextInputLayout">
+        <item name="boxStrokeColor">@color/mtrl_textinput_color</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="cornerRadius">10dp</item>
+
     </style>
 </resources>

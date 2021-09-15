@@ -24,8 +24,8 @@
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_verify_number">VerifyNumberActivity</string>
     <string name="next">Next</string>
-    <string name="we_are_committed_to_safeguarding_the_privacy_of_our_users">We are committed to safeguarding the privacy of our Users</string>
-    <string name="by_tapping_next_you_will_receive_an_otp_code_via_sms_nmessage_and_data_charges_may_apply">By tapping Next, you will receive an OTP code via SMS.\nMessage and Data Charges may apply.</string>
-    <string name="enter_mobile_no">enter mobile no.</string>
+    <string name="terms_condition_text">We are committed to safeguarding the privacy of our Users</string>
+    <string name="enter_mobile_no">Phone Number</string>
     <string name="_91">+91</string>
+    <string name="referral_code_text">Do you have referral code? Click here</string>
 </resources>

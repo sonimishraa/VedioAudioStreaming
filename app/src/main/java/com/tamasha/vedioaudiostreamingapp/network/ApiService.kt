@@ -1,8 +1,14 @@
 package com.tamasha.vedioaudiostreamingapp.network
 
+import com.tamasha.vedioaudiostreamingapp.model.ProjectConstants.SEND_OTP
 import com.tamasha.vedioaudiostreamingapp.model.ProjectConstants.USER_BY_PHONE_LOGIN
+import com.tamasha.vedioaudiostreamingapp.model.ProjectConstants.VERIFY_OTP
+import com.tamasha.vedioaudiostreamingapp.model.request.NumberRegisterRequest
 import com.tamasha.vedioaudiostreamingapp.model.response.UserByPhoneResponse
 import com.tamasha.vedioaudiostreamingapp.model.request.UserOtpRequest
+import com.tamasha.vedioaudiostreamingapp.model.request.VerifyOtpRequest
+import com.tamasha.vedioaudiostreamingapp.model.response.SendOtpResponse
+import com.tamasha.vedioaudiostreamingapp.model.response.VerifyOtpResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
@@ -11,7 +17,13 @@ import retrofit2.http.POST
 interface ApiService {
 
     @POST(USER_BY_PHONE_LOGIN)
-    suspend fun userLogin(@Body userLoginRequest: UserOtpRequest): Call<UserByPhoneResponse>
+    suspend fun userLogin(@Body numberRegisterRequest: NumberRegisterRequest):UserByPhoneResponse
+
+    @POST(SEND_OTP)
+    suspend fun senOtp(@Body userOtpRequest: UserOtpRequest):SendOtpResponse
+
+    @POST(VERIFY_OTP)
+    suspend fun verifyOtp(@Body verifyOtpRequest: VerifyOtpRequest):VerifyOtpResponse
 
     /*  @GET(GET_DOCTOR_NUMBER)
       fun getDoctor(): Call<DoctorSignUpResponse>

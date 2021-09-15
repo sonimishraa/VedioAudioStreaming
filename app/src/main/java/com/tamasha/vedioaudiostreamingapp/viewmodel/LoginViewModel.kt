@@ -1,30 +1,47 @@
 package com.tamasha.vedioaudiostreamingapp.viewmodel
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.tamasha.vedioaudiostreamingapp.model.request.NumberRegisterRequest
 import com.tamasha.vedioaudiostreamingapp.model.request.UserOtpRequest
+import com.tamasha.vedioaudiostreamingapp.model.response.SendOtpResponse
 import com.tamasha.vedioaudiostreamingapp.model.response.UserByPhoneResponse
 import com.tamasha.vedioaudiostreamingapp.repository.LoginRepository
 import com.tamasha.vedioaudiostreamingapp.tokennetwork.Resource
 import com.tamasha.vedioaudiostreamingapp.util.crashlytics
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import retrofit2.Call
+import javax.inject.Inject
 
-class LoginViewModel : ViewModel() {
-    private val repository = LoginRepository()
-    val userLoginResponse = MutableLiveData<Resource<Call<UserByPhoneResponse>>>()
+@HiltViewModel
+class LoginViewModel @Inject constructor(private val repository: LoginRepository) : ViewModel() {
+    val userMobileRegisterResponse = MutableLiveData<Resource<UserByPhoneResponse>>()
+    val userOtpResponse = MutableLiveData<Resource<SendOtpResponse>>()
 
-    fun sendOtpRequest(request: UserOtpRequest, application: Application) {
+    fun registerNumberRequest(request: NumberRegisterRequest) {
         viewModelScope.launch {
-            val response = repository.sendOtpRequest(request, application)
-            userLoginResponse.postValue(Resource.loading())
+            val response = repository.registerMobileRequest(request)
+            userMobileRegisterResponse.postValue(Resource.loading())
             try {
-                userLoginResponse.postValue(Resource.success(response))
+                userMobileRegisterResponse.postValue(Resource.success(response))
             } catch (e: Exception) {
                 crashlytics.recordException(e)
-                userLoginResponse.postValue(Resource.error(e.message))
+                userMobileRegisterResponse.postValue(Resource.error(e.message))
+            }
+        }
+
+    }
+
+    fun sendOtpRequest(request: UserOtpRequest) {
+        viewModelScope.launch {
+            val response = repository.sendOtpRequest(request)
+            userOtpResponse.postValue(Resource.loading())
+            try {
+                userOtpResponse.postValue(Resource.success(response))
+            } catch (e: Exception) {
+                crashlytics.recordException(e)
+                userOtpResponse.postValue(Resource.error(e.message))
             }
         }
 

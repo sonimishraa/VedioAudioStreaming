@@ -25,9 +25,11 @@ import com.tamasha.vedioaudiostreamingapp.util.getInitEndpointEnvironment
 import com.tamasha.vedioaudiostreamingapp.util.isValidMeetingUrl
 import com.tamasha.vedioaudiostreamingapp.util.toSubdomain
 import com.tamasha.vedioaudiostreamingapp.viewmodel.HomeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 private const val TAG = "HomeFragment"
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     lateinit var binding: FragmentHomeBinding
@@ -105,8 +107,6 @@ class HomeFragment : Fragment() {
         viewModel.authTokenResponse.observe(viewLifecycleOwner, { response ->
             when (response.status) {
                 Status.SUCCESS -> {
-                    // No need to hide progress bar here, as we directly move to
-                    // the next page
                     val data = response.data!!
                     val roomDetails = RoomDetails(
                         env = setting.environment,
@@ -129,6 +129,9 @@ class HomeFragment : Fragment() {
                         response.message,
                         Toast.LENGTH_LONG
                     ).show()
+                }
+                Status.LOADING -> {
+
                 }
             }
 

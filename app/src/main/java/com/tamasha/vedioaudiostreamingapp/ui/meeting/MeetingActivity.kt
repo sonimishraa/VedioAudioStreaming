@@ -8,7 +8,9 @@ import androidx.navigation.ui.navigateUp
 import com.tamasha.vedioaudiostreamingapp.R
 import com.tamasha.vedioaudiostreamingapp.databinding.ActivityMeetingBinding
 import com.tamasha.vedioaudiostreamingapp.model.Constants
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MeetingActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration

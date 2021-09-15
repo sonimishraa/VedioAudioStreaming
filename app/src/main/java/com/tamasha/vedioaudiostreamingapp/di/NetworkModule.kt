@@ -9,6 +9,7 @@ import com.tamasha.vedioaudiostreamingapp.network.RetrofitBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.internal.managers.ApplicationComponentManager
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import javax.inject.Singleton
@@ -21,5 +22,6 @@ class NetworkModule {
     @Provides
     fun provideRetrofit(application: Application): ApiService  =
         RetrofitBuilder.getRetrofit(application)
+
 
 }

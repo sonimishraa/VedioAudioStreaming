@@ -100,10 +100,6 @@ class SettingsStorePreferences(context: Context) {
         }
     }
 
-    var token: String?
-        get() = sharedPreferences.getString(AUTH_TOKEN, "")
-        set(value) = putString(AUTH_TOKEN, value)
-
     var enableSubscribeDegradation: Boolean
         get() = sharedPreferences.getBoolean(SUBSCRIBE_DEGRADATION, true)
         set(value) = putBoolean(SUBSCRIBE_DEGRADATION, value)

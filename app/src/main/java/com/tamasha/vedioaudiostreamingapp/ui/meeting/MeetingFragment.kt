@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.tamasha.vedioaudiostreamingapp.databinding.FragmentMeetingBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MeetingFragment : Fragment() {
 
     lateinit var binding: FragmentMeetingBinding
