@@ -1,4 +1,4 @@
-package com.tamasha.vedioaudiostreamingapp.model
+package com.tamasha.vedioaudiostreamingapp.model.response
 
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName

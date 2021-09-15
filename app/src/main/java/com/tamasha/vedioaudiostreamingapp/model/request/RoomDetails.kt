@@ -1,4 +1,4 @@
-package com.tamasha.vedioaudiostreamingapp.model
+package com.tamasha.vedioaudiostreamingapp.model.request
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

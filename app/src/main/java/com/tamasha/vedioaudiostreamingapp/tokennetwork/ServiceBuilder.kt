@@ -2,9 +2,9 @@ package com.tamasha.vedioaudiostreamingapp.tokennetwork
 
 import android.util.Log
 import com.google.gson.Gson
-import com.tamasha.vedioaudiostreamingapp.model.TokenRequestWithCode
-import com.tamasha.vedioaudiostreamingapp.model.TokenRequestWithRoomId
-import com.tamasha.vedioaudiostreamingapp.model.TokenResponse
+import com.tamasha.vedioaudiostreamingapp.model.request.TokenRequestWithCode
+import com.tamasha.vedioaudiostreamingapp.model.request.TokenRequestWithRoomId
+import com.tamasha.vedioaudiostreamingapp.model.response.TokenResponse
 import com.tamasha.vedioaudiostreamingapp.util.crashlyticsLog
 import com.tamasha.vedioaudiostreamingapp.util.getTokenEndpointForCode
 import com.tamasha.vedioaudiostreamingapp.util.getTokenEndpointForRoomId

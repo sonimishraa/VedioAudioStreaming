@@ -17,7 +17,7 @@ import com.tamasha.vedioaudiostreamingapp.model.Constants.REGEX_MEETING_CODE
 import com.tamasha.vedioaudiostreamingapp.model.Constants.REGEX_MEETING_URL_CODE
 import com.tamasha.vedioaudiostreamingapp.model.Constants.REGEX_MEETING_URL_ROOM_ID
 import com.tamasha.vedioaudiostreamingapp.model.Constants.ROOM_DETAILS
-import com.tamasha.vedioaudiostreamingapp.model.RoomDetails
+import com.tamasha.vedioaudiostreamingapp.model.request.RoomDetails
 import com.tamasha.vedioaudiostreamingapp.settings.SettingsStorePreferences
 import com.tamasha.vedioaudiostreamingapp.tokennetwork.Status
 import com.tamasha.vedioaudiostreamingapp.ui.meeting.MeetingActivity

@@ -3,7 +3,7 @@ package com.tamasha.vedioaudiostreamingapp.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.tamasha.vedioaudiostreamingapp.model.TokenResponse
+import com.tamasha.vedioaudiostreamingapp.model.response.TokenResponse
 import com.tamasha.vedioaudiostreamingapp.repository.HomeRepository
 import com.tamasha.vedioaudiostreamingapp.tokennetwork.Resource
 import com.tamasha.vedioaudiostreamingapp.tokennetwork.ServiceBuilder

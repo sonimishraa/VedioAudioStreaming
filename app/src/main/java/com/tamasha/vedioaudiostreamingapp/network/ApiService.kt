@@ -1,8 +1,8 @@
 package com.tamasha.vedioaudiostreamingapp.network
 
 import com.tamasha.vedioaudiostreamingapp.model.ProjectConstants.USER_BY_PHONE_LOGIN
-import com.tamasha.vedioaudiostreamingapp.model.UserByPhoneResponse
-import com.tamasha.vedioaudiostreamingapp.model.UserLoginRequest
+import com.tamasha.vedioaudiostreamingapp.model.response.UserByPhoneResponse
+import com.tamasha.vedioaudiostreamingapp.model.request.UserOtpRequest
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
@@ -11,7 +11,7 @@ import retrofit2.http.POST
 interface ApiService {
 
     @POST(USER_BY_PHONE_LOGIN)
-    fun doctorLogin(@Body userLoginRequest: UserLoginRequest): Call<UserByPhoneResponse>
+    suspend fun userLogin(@Body userLoginRequest: UserOtpRequest): Call<UserByPhoneResponse>
 
     /*  @GET(GET_DOCTOR_NUMBER)
       fun getDoctor(): Call<DoctorSignUpResponse>

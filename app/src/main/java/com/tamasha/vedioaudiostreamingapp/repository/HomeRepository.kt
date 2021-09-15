@@ -1,6 +1,6 @@
 package com.tamasha.vedioaudiostreamingapp.repository
 
-import com.tamasha.vedioaudiostreamingapp.model.TokenResponse
+import com.tamasha.vedioaudiostreamingapp.model.response.TokenResponse
 import com.tamasha.vedioaudiostreamingapp.tokennetwork.ServiceBuilder
 import okhttp3.Request
 
