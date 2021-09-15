@@ -61,6 +61,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/enter_mobile_no"
+            app:hintTextColor="@color/white"
             android:textColorHint="@color/white"
             android:layout_weight="1">
 
@@ -72,7 +73,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
                 android:textColor="@color/white"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:layout_gravity="start"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,13 +94,28 @@
         android:layout_marginTop="8dp"
         android:textSize="14dp"/>
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/truecaller_referral_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/referral_code"
+        android:textColor="@color/darkGray"
+        android:text="@string/referral_code_text"
+        android:gravity="center"
+        android:padding="8dp"
+        android:visibility="gone"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginTop="8dp"
+        android:textSize="14dp"/>
+
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/layout_edit_referral"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Referral Code (Optional)"
-        android:layout_below="@+id/referral_code"
+        android:layout_below="@+id/truecaller_referral_code"
         android:layout_marginStart="59dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="59dp"
@@ -124,6 +141,39 @@
         android:background="@drawable/button_backgound"
         android:text="@string/next"
         android:textColor="@color/white"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginTop="25dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/trucaller_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_login"
+        android:textColor="@color/darkGray"
+        android:text="@string/trucaller_text"
+        android:gravity="center"
+        android:padding="8dp"
+        android:visibility="visible"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginTop="8dp"
+        android:textSize="14dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_truecallerLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/trucaller_text"
+        android:background="@drawable/button_backgound"
+        android:hint="@string/next"
+        android:textColorHint="@color/white"
+        android:text="Truecaller"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:textAlignment="center"
+        android:textColor="@color/purple_500"
         android:layout_marginStart="22dp"
         android:layout_marginEnd="22dp"
         android:layout_marginTop="25dp"/>

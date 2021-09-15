@@ -40,11 +40,29 @@ class LoginActivity : AppCompatActivity() {
         binding.referralCode.setOnClickListener {
             binding.referralCode.visibility = View.GONE
             binding.layoutEditReferral.visibility = View.VISIBLE
+            binding.buttonLogin.visibility = View.VISIBLE
+            binding.trucallerText.visibility = View.GONE
+            binding.buttonTruecallerLogin.visibility = View.GONE
+        }
+        binding.trucallerText.setOnClickListener {
+            binding.trucallerText.visibility = View.GONE
+            binding.referralCode.visibility = View.GONE
+            binding.buttonLogin.visibility = View.GONE
+            binding.truecallerReferralCode.visibility = View.VISIBLE
+            binding.buttonTruecallerLogin.visibility = View.VISIBLE
+        }
+        binding.truecallerReferralCode.setOnClickListener {
+            binding.trucallerText.visibility = View.GONE
+            binding.referralCode.visibility = View.GONE
+            binding.buttonLogin.visibility = View.GONE
+            binding.truecallerReferralCode.visibility= View.GONE
+            binding.layoutEditReferral.visibility = View.VISIBLE
+            binding.buttonTruecallerLogin.visibility = View.VISIBLE
         }
 
         binding.buttonLogin.setOnClickListener {
-            val intent = Intent(this, VerifyNumberActivity::class.java)
-            startActivity(intent)
+            /* val intent = Intent(this, VerifyNumberActivity::class.java)
+             startActivity(intent)*/
             if (validateFields()) {
                 val request =
                     NumberRegisterRequest(MobileNumber = number, DeviceID = deviceId, referralCode)
@@ -87,7 +105,10 @@ class LoginActivity : AppCompatActivity() {
                           startActivity(this)
                       }*/
                     val intent = Intent(this, VerifyNumberActivity::class.java)
-                    intent.putExtra("User_Detail", userDetail)
+                    intent.putExtra("number", number)
+                    intent.putExtra("playerId", playerId)
+                    intent.putExtra("deviceId", deviceId)
+                    intent.putExtra("referralCode", referralCode)
                     startActivity(intent)
                 }
                 Status.ERROR -> {
