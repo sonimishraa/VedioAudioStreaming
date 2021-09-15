@@ -87,7 +87,9 @@ class LoginActivity : AppCompatActivity() {
                           startActivity(this)
                       }*/
                     val intent = Intent(this, VerifyNumberActivity::class.java)
-                    intent.putExtra("User_Detail", userDetail)
+                    intent.putExtra("number", number)
+                    intent.putExtra("playerId",playerId)
+                    intent.putExtra("deviceId",deviceId)
                     startActivity(intent)
                 }
                 Status.ERROR -> {

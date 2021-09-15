@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.phone.SmsRetriever
 import com.google.android.gms.auth.api.phone.SmsRetrieverClient
 import com.tamasha.vedioaudiostreamingapp.databinding.ActivityVerifyNumberBinding
-import com.tamasha.vedioaudiostreamingapp.model.UserDetail
 import com.tamasha.vedioaudiostreamingapp.model.request.VerifyOtpRequest
 import com.tamasha.vedioaudiostreamingapp.network.SmsBroadCastReceiver
 import com.tamasha.vedioaudiostreamingapp.tokennetwork.Status
@@ -31,7 +30,9 @@ class VerifyNumberActivity : AppCompatActivity() {
     lateinit var secondDigit: String
     lateinit var thirdDigit: String
     lateinit var forthDigit: String
-    lateinit var userDetails: UserDetail
+    lateinit var number: String
+    lateinit var deviceId: String
+    lateinit var playerId: String
     private lateinit var binding: ActivityVerifyNumberBinding
     val viewModel: VerifyOtpViewModel by viewModels()
 
@@ -39,14 +40,14 @@ class VerifyNumberActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityVerifyNumberBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val bundle = intent.extras
+         number = bundle?.getString("number").toString()
+        deviceId = bundle?.getString("deviceId").toString()
+        playerId = bundle?.getString("playerId").toString()
+
         smartUserConsent()
-        intView()
         initListener()
         initObserver()
-    }
-
-    private fun intView() {
-        //userDetails = intent!!.extras!!["User_Detail"] as UserDetail
     }
 
     private fun initListener() {
@@ -59,8 +60,8 @@ class VerifyNumberActivity : AppCompatActivity() {
         if (validateFields()) {
             val clientOtp = firstDigit + secondDigit + thirdDigit + forthDigit
             val verifyOtpRequest = VerifyOtpRequest(
-                ClientOTP = clientOtp, MobileNumber = userDetails.number,
-                UserId = userDetails.playerId, DeviceID = userDetails.deviceId
+                ClientOTP = clientOtp, MobileNumber = number,
+                UserId = playerId, DeviceID = deviceId
             )
             viewModel.verifyOtpRequest(verifyOtpRequest)
         }
