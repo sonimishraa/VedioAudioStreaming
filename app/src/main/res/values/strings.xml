@@ -25,7 +25,9 @@
     <string name="title_activity_verify_number">VerifyNumberActivity</string>
     <string name="next">Next</string>
     <string name="terms_condition_text">We are committed to safeguarding the privacy of our Users</string>
-    <string name="enter_mobile_no">Phone Number</string>
+    <string name="enter_mobile_no">Phone Number*</string>
     <string name="_91">+91</string>
     <string name="referral_code_text">Do you have referral code? Click here</string>
+    <string name="partnerKey">appKey</string>
+    <string name="trucaller_text">Do you have truecaller id? Login Here</string>
 </resources>

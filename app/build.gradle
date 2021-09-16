@@ -153,6 +153,8 @@ dependencies {
     // message retrieving service
     implementation "com.google.android.gms:play-services-auth-api-phone:17.5.1"
 
+    // TrueCaller Sdk
+
 }
 kapt {
     correctErrorTypes true
