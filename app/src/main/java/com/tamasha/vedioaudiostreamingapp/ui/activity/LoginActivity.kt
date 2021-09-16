@@ -55,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
             binding.trucallerText.visibility = View.GONE
             binding.referralCode.visibility = View.GONE
             binding.buttonLogin.visibility = View.GONE
-            binding.truecallerReferralCode.visibility= View.GONE
+            binding.truecallerReferralCode.visibility = View.GONE
             binding.layoutEditReferral.visibility = View.VISIBLE
             binding.buttonTruecallerLogin.visibility = View.VISIBLE
         }
@@ -132,5 +132,4 @@ class LoginActivity : AppCompatActivity() {
 
         return isAllFieldValidate
     }
-
 }
