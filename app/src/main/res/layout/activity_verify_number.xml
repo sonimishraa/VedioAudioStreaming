@@ -54,6 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textView3"
         android:textSize="14dp"
+        android:layout_marginTop="12dp"
         android:textColor="@color/darkGray"
         android:gravity="center"
         android:text="enter the 4 digit OTP to proceed" />
@@ -64,43 +65,66 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView4"
         android:orientation="horizontal"
-        android:layout_marginTop="95dp"
+        android:layout_marginTop="65dp"
         android:layout_marginStart="59dp"
-        android:layout_marginEnd="59dp">
+        android:layout_marginEnd="50dp">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
+            android:id="@+id/first_digit"
             android:layout_width="wrap_content"
-            android:layout_height="3dp"
-            android:layout_marginEnd="14dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/line_input_background"
-            android:hint="hint"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:layout_gravity="end"
+            android:textSize="40sp"
+            android:inputType="number"
+            android:gravity="center"
+            android:maxLength="1"
+            android:layout_marginEnd="14dp"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"/>
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
+            android:id="@+id/second_digit"
             android:layout_width="wrap_content"
-            android:layout_height="3dp"
-            android:layout_marginEnd="14dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/line_input_background"
-            android:hint="hint"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:layout_gravity="end"
+            android:textSize="40sp"
+            android:inputType="number"
+            android:gravity="center"
+            android:maxLength="1"
+            android:layout_marginEnd="14dp"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"/>
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
+            android:id="@+id/third_digit"
             android:layout_width="wrap_content"
-            android:layout_height="3dp"
-            android:layout_marginEnd="14dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/line_input_background"
-            android:hint="hint"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:layout_gravity="end"
+            android:textSize="40sp"
+            android:inputType="number"
+            android:gravity="center"
+            android:maxLength="1"
+            android:layout_marginEnd="14dp"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"/>
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
+            android:id="@+id/forth_digit"
             android:layout_width="wrap_content"
-            android:layout_height="3dp"
-            android:layout_marginEnd="14dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/line_input_background"
-            android:hint="hint"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:layout_gravity="end"
+            android:textSize="40sp"
+            android:inputType="number"
+            android:gravity="center"
+            android:maxLength="1"
+            android:maxLines="1"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
-
     <TextView
         android:id="@+id/resend_code_text"
         android:layout_width="match_parent"
@@ -124,15 +148,15 @@
         android:textColor="@color/white"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_login"
+        android:id="@+id/btn_confirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/resend_Otp"
         android:background="@drawable/button_backgound"
         android:text="Confirm"
         android:textColor="@color/white"
-        android:layout_marginStart="59dp"
-        android:layout_marginEnd="59dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp"
         android:layout_marginTop="25dp"/>
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -143,8 +167,8 @@
         android:textColor="@color/darkGray"
         android:layout_marginBottom="20dp"
         android:gravity="center"
-        android:layout_marginStart="84dp"
-        android:layout_marginEnd="84dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp"
         android:layout_alignParentBottom="true"/>
 
 
