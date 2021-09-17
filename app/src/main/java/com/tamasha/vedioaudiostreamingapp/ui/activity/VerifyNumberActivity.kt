@@ -10,9 +10,13 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.phone.SmsRetriever
 import com.google.android.gms.auth.api.phone.SmsRetrieverClient
 import com.tamasha.vedioaudiostreamingapp.databinding.ActivityVerifyNumberBinding
+import com.tamasha.vedioaudiostreamingapp.model.request.NumberRegisterRequest
+import com.tamasha.vedioaudiostreamingapp.model.request.UserOtpRequest
 import com.tamasha.vedioaudiostreamingapp.model.request.VerifyOtpRequest
 import com.tamasha.vedioaudiostreamingapp.network.SmsBroadCastReceiver
 import com.tamasha.vedioaudiostreamingapp.tokennetwork.Status
+import com.tamasha.vedioaudiostreamingapp.ui.meeting.MeetingActivity
+import com.tamasha.vedioaudiostreamingapp.viewmodel.LoginViewModel
 import com.tamasha.vedioaudiostreamingapp.viewmodel.VerifyOtpViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.regex.Matcher
@@ -33,26 +37,35 @@ class VerifyNumberActivity : AppCompatActivity() {
     lateinit var number: String
     lateinit var deviceId: String
     lateinit var playerId: String
+    lateinit var referralCode:String
     private lateinit var binding: ActivityVerifyNumberBinding
     val viewModel: VerifyOtpViewModel by viewModels()
+    val loginViewModel: LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityVerifyNumberBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val bundle = intent.extras
-         number = bundle?.getString("number").toString()
-        deviceId = bundle?.getString("deviceId").toString()
-        playerId = bundle?.getString("playerId").toString()
-
+        initView()
         smartUserConsent()
         initListener()
         initObserver()
     }
 
+    private fun initView() {
+        val bundle = intent.extras
+        number = bundle?.getString("number").toString()
+        deviceId = bundle?.getString("deviceId").toString()
+        playerId = bundle?.getString("playerId").toString()
+        referralCode = bundle?.getString("referral").toString()
+    }
+
     private fun initListener() {
         binding.btnConfirm.setOnClickListener {
             verifyOtp()
+        }
+        binding.resendOtp.setOnClickListener {
+            resendOtp()
         }
     }
 
@@ -67,11 +80,56 @@ class VerifyNumberActivity : AppCompatActivity() {
         }
     }
 
+    private fun resendOtp() {
+        val request =
+            NumberRegisterRequest(MobileNumber = number, DeviceID = deviceId, referralCode)
+        loginViewModel.registerNumberRequest(request)
+    }
+
     private fun initObserver() {
         viewModel.verifyOtpResponse.observe(this, { response ->
             when (response.status) {
                 Status.SUCCESS -> {
-                    Toast.makeText(this, "${response.data?.authToken}", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this, "${response.data?.authToken}", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, MeetingActivity::class.java)
+                    startActivity(intent)
+                }
+                Status.ERROR -> {
+                    Log.e(TAG, "observeLiveData: $response")
+                    Toast.makeText(
+                        this,
+                        response.message,
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
+
+        })
+        loginViewModel.userMobileRegisterResponse.observe(this, { response ->
+            when (response.status) {
+                Status.SUCCESS -> {
+                    response.data?.data?.let {
+                        playerId = it.playerId
+                        val request = UserOtpRequest(number, playerId, deviceId)
+                        loginViewModel.sendOtpRequest(request)
+                    }
+                }
+                Status.ERROR -> {
+                    Log.e(TAG, "observeLiveData: $response")
+                    Toast.makeText(
+                        this,
+                        response.message,
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
+
+        })
+
+        loginViewModel.userOtpResponse.observe(this, { response ->
+            when (response.status) {
+                Status.SUCCESS -> {
+                    Toast.makeText(this, "Resend OTP Successfully", Toast.LENGTH_SHORT).show()
                 }
                 Status.ERROR -> {
                     Log.e(TAG, "observeLiveData: $response")
@@ -132,16 +190,12 @@ class VerifyNumberActivity : AppCompatActivity() {
                 }
             })
         val intentFilter: IntentFilter = IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION)
-        //registerBroadCastReceiver(smsBroadCastReceiver, intentFilter)
+        registerReceiver(smsBroadCastReceiver, intentFilter)
     }
 
     override fun onStart() {
         registerBroadCastReceiver()
         super.onStart()
 
-    }
-
-    override fun onStop() {
-        super.onStop()
     }
 }
