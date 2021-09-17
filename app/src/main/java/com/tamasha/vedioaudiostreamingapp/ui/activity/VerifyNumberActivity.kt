@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doOnTextChanged
 import com.google.android.gms.auth.api.phone.SmsRetriever
 import com.google.android.gms.auth.api.phone.SmsRetrieverClient
 import com.tamasha.vedioaudiostreamingapp.databinding.ActivityVerifyNumberBinding
@@ -37,7 +38,7 @@ class VerifyNumberActivity : AppCompatActivity() {
     lateinit var number: String
     lateinit var deviceId: String
     lateinit var playerId: String
-    lateinit var referralCode:String
+    lateinit var referralCode: String
     private lateinit var binding: ActivityVerifyNumberBinding
     val viewModel: VerifyOtpViewModel by viewModels()
     val loginViewModel: LoginViewModel by viewModels()
@@ -66,6 +67,21 @@ class VerifyNumberActivity : AppCompatActivity() {
         }
         binding.resendOtp.setOnClickListener {
             resendOtp()
+        }
+        binding.firstDigit.doOnTextChanged { text, start, before, count ->
+            if (binding.firstDigit.text.toString().length == 1) {
+                binding.secondDigit.requestFocus()
+            }
+        }
+        binding.secondDigit.doOnTextChanged { text, start, before, count ->
+            if (binding.secondDigit.text.toString().length == 1 && binding.firstDigit.text.toString().length == 1) {
+                binding.thirdDigit.requestFocus()
+            }
+        }
+        binding.thirdDigit.doOnTextChanged { text, start, before, count ->
+            if (binding.thirdDigit.text.toString().length == 1 && binding.secondDigit.text.toString().length == 1 && binding.firstDigit.text.toString().length == 1) {
+                binding.forthDigit.requestFocus()
+            }
         }
     }
 
