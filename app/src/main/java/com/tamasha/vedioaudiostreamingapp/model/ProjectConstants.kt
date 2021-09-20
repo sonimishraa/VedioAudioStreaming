@@ -7,6 +7,7 @@ object ProjectConstants {
     const val USER_BY_PHONE_LOGIN = "api/other/user_by_phone/v2"
     const val SEND_OTP = "api/otp/send"
     const val VERIFY_OTP = "api/otp/verify"
+    const val REGISTER_WITH_TRUECALLER = "api/user/truecaller/register"
 
 
 }

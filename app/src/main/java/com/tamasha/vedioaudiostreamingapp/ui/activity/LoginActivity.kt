@@ -15,6 +15,7 @@ import com.tamasha.vedioaudiostreamingapp.databinding.ActivityLoginBinding
 import com.tamasha.vedioaudiostreamingapp.model.request.NumberRegisterRequest
 import com.tamasha.vedioaudiostreamingapp.model.request.UserOtpRequest
 import com.tamasha.vedioaudiostreamingapp.tokennetwork.Status
+import com.tamasha.vedioaudiostreamingapp.ui.HomeActivity
 import com.tamasha.vedioaudiostreamingapp.viewmodel.LoginViewModel
 import com.truecaller.android.sdk.*
 import dagger.hilt.android.AndroidEntryPoint
@@ -83,6 +84,13 @@ class LoginActivity : AppCompatActivity() {
                 viewModel.registerNumberRequest(request)
             }
         }
+        binding.buttonTruecallerLogin.setOnClickListener {
+           /* if (validateFields()) {
+                val request =
+                    NumberRegisterRequest(MobileNumber = number, DeviceID = deviceId, referralCode)
+                viewModel.registerNumberRequest(request)
+            }*/
+        }
     }
 
     private fun initObserver() {
@@ -131,6 +139,33 @@ class LoginActivity : AppCompatActivity() {
                     intent.putExtra("playerId", playerId)
                     intent.putExtra("deviceId", deviceId)
                     intent.putExtra("referralCode", referralCode)
+                    startActivity(intent)
+                }
+                Status.ERROR -> {
+                    Log.e(TAG, "observeLiveData: $response")
+                    Toast.makeText(
+                        this,
+                        response.message,
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
+
+        })
+
+        viewModel.truecallerRegister.observe(this, { response ->
+            when (response.status) {
+                Status.SUCCESS -> {
+                    Toast.makeText(this, "Logged in with TrueCaller", Toast.LENGTH_SHORT).show()
+                   /* editor = sharedPreferences.edit()
+                    editor.putString("deviceId", deviceId)
+                    editor.putString("number", number)
+                    val intent = Intent(this, VerifyNumberActivity::class.java)
+                    intent.putExtra("number", number)
+                    intent.putExtra("playerId", playerId)
+                    intent.putExtra("deviceId", deviceId)
+                    intent.putExtra("referralCode", referralCode)*/
+                    val intent = Intent(this, HomeActivity::class.java)
                     startActivity(intent)
                 }
                 Status.ERROR -> {

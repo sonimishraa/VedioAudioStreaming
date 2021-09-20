@@ -1,13 +1,16 @@
 package com.tamasha.vedioaudiostreamingapp.network
 
+import com.tamasha.vedioaudiostreamingapp.model.ProjectConstants.REGISTER_WITH_TRUECALLER
 import com.tamasha.vedioaudiostreamingapp.model.ProjectConstants.SEND_OTP
 import com.tamasha.vedioaudiostreamingapp.model.ProjectConstants.USER_BY_PHONE_LOGIN
 import com.tamasha.vedioaudiostreamingapp.model.ProjectConstants.VERIFY_OTP
 import com.tamasha.vedioaudiostreamingapp.model.request.NumberRegisterRequest
+import com.tamasha.vedioaudiostreamingapp.model.request.TrueCallerRegisterRequest
 import com.tamasha.vedioaudiostreamingapp.model.response.UserByPhoneResponse
 import com.tamasha.vedioaudiostreamingapp.model.request.UserOtpRequest
 import com.tamasha.vedioaudiostreamingapp.model.request.VerifyOtpRequest
 import com.tamasha.vedioaudiostreamingapp.model.response.SendOtpResponse
+import com.tamasha.vedioaudiostreamingapp.model.response.TrueCallerRegisterResponse
 import com.tamasha.vedioaudiostreamingapp.model.response.VerifyOtpResponse
 import retrofit2.Call
 import retrofit2.http.Body
@@ -24,6 +27,9 @@ interface ApiService {
 
     @POST(VERIFY_OTP)
     suspend fun verifyOtp(@Body verifyOtpRequest: VerifyOtpRequest):VerifyOtpResponse
+
+    @POST(REGISTER_WITH_TRUECALLER)
+    suspend fun registerWithTruecaller(@Body trueCallerRequest:TrueCallerRegisterRequest):TrueCallerRegisterResponse
 
     /*  @GET(GET_DOCTOR_NUMBER)
       fun getDoctor(): Call<DoctorSignUpResponse>
