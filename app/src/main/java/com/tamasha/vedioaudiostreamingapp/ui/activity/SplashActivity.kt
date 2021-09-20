@@ -26,7 +26,7 @@ class SplashActivity : AppCompatActivity() {
     private fun initView() {
         Handler().postDelayed({
             if (checkLoginStatus()) {
-                val mIntent = Intent(this@SplashActivity, HomeActivity::class.java)
+                val mIntent = Intent(this@SplashActivity, LoginActivity::class.java)
                 startActivity(mIntent)
             }
             else {

@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
 import com.tamasha.vedioaudiostreamingapp.R
 import com.tamasha.vedioaudiostreamingapp.databinding.ActivityLoginBinding
@@ -15,6 +16,7 @@ import com.tamasha.vedioaudiostreamingapp.model.request.NumberRegisterRequest
 import com.tamasha.vedioaudiostreamingapp.model.request.UserOtpRequest
 import com.tamasha.vedioaudiostreamingapp.tokennetwork.Status
 import com.tamasha.vedioaudiostreamingapp.viewmodel.LoginViewModel
+import com.truecaller.android.sdk.*
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
@@ -151,4 +153,42 @@ class LoginActivity : AppCompatActivity() {
         }
         return isAllFieldValidate
     }
+
+    fun truecallerInstance() {
+        val trueScope = TruecallerSdkScope.Builder(this, sdkCallback)
+            .consentMode(TruecallerSdkScope.CONSENT_MODE_POPUP)
+            .consentTitleOption(TruecallerSdkScope.SDK_CONSENT_TITLE_VERIFY)
+            .footerType(TruecallerSdkScope.FOOTER_TYPE_SKIP)
+            .sdkOptions(TruecallerSdkScope.SDK_OPTION_WITH_OTP)
+            .build()
+        TruecallerSDK.init(trueScope)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, @Nullable data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (TruecallerSDK.getInstance().isUsable) {
+            TruecallerSDK.getInstance()
+                .onActivityResultObtained(this, requestCode, resultCode, data)
+        }
+    }
+
+    object sdkCallback : ITrueCallback {
+        override fun onSuccessProfileShared(p0: TrueProfile) {
+
+        }
+
+        override fun onFailureProfileShared(p0: TrueError) {
+
+        }
+
+        override fun onVerificationRequired(p0: TrueError?) {
+
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        TruecallerSDK.clear()
+    }
+
 }

@@ -42,13 +42,13 @@
             android:layout_height="wrap_content"
             android:layout_weight=".3"
             android:textColorHint="@color/white"
-            android:layout_marginRight="4dp">
+            android:layout_marginRight="2dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/outline_background"
                 android:textSize="16dp"
+                android:background="@color/purple_700"
                 android:textColor="@color/white"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
@@ -66,11 +66,10 @@
             android:layout_weight="1">
 
             <com.google.android.material.textfield.TextInputEditText
-
-                android:background="@drawable/outline_background"
                 android:id="@+id/edit_Number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/purple_700"
                 android:textSize="16dp"
                 android:textColor="@color/white"
                 android:gravity="center"
