@@ -30,4 +30,18 @@
     <string name="referral_code_text">Do you have referral code? Click here</string>
     <string name="partnerKey">appKey</string>
     <string name="trucaller_text">Do you have truecaller id? Login Here</string>
+    <string name="share_pref">Login_Response_SharedPref</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="sharePref_playerId">playerId</string>
+    <string name="sharedPref_loginStatus">alreadyLoggedIn</string>
+    <string name="sharedPref_walletId">walletId</string>
+    <string name="sharedPref_authToken">authToken</string>
+    <string name="sharedPref_newUserStatus">newUser</string>
+    <string name="title_home">Home</string>
+    <string name="title_discover">Discover</string>
+    <string name="title_play">Play</string>
+    <string name="title_club">Club</string>
+    <string name="refresh_earn"><![CDATA[Refresh & Earn]]></string>
 </resources>

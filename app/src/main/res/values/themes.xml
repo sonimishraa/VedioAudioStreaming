@@ -29,4 +29,11 @@
         <item name="cornerRadius">10dp</item>
 
     </style>
+    <style name="Theme.VedioAudioStreamingApp.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.VedioAudioStreamingApp.AppBarOverlay"
+        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.VedioAudioStreamingApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

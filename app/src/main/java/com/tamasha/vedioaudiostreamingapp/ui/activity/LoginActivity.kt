@@ -1,14 +1,16 @@
 package com.tamasha.vedioaudiostreamingapp.ui.activity
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.tamasha.vedioaudiostreamingapp.R
 import com.tamasha.vedioaudiostreamingapp.databinding.ActivityLoginBinding
-import com.tamasha.vedioaudiostreamingapp.model.UserDetail
 import com.tamasha.vedioaudiostreamingapp.model.request.NumberRegisterRequest
 import com.tamasha.vedioaudiostreamingapp.model.request.UserOtpRequest
 import com.tamasha.vedioaudiostreamingapp.tokennetwork.Status
@@ -27,6 +29,8 @@ class LoginActivity : AppCompatActivity() {
     lateinit var deviceId: String
     lateinit var referralCode: String
     lateinit var playerId: String
+    lateinit var sharedPreferences:SharedPreferences
+    lateinit var editor:SharedPreferences.Editor
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,6 +81,15 @@ class LoginActivity : AppCompatActivity() {
                 Status.SUCCESS -> {
                     response.data?.data?.let {
                         playerId = it.playerId
+                        sharedPreferences = getSharedPreferences(
+                        getString(R.string.share_pref),
+                        Context.MODE_PRIVATE
+                    )
+                        editor = sharedPreferences.edit()
+                        editor.putString(getString(R.string.sharePref_playerId), it.playerId)
+                        editor.putBoolean(getString(R.string.sharedPref_loginStatus), it.alreadyLoggedIn)
+                        editor.putInt(getString(R.string.sharedPref_walletId), it.walletId)
+                        editor.apply()
                         val request = UserOtpRequest(number, playerId, deviceId)
                         viewModel.sendOtpRequest(request)
                     }
@@ -96,14 +109,13 @@ class LoginActivity : AppCompatActivity() {
         viewModel.userOtpResponse.observe(this, { response ->
             when (response.status) {
                 Status.SUCCESS -> {
-                    val data = response.data!!
+                  /*  val data = response.data!!
                     val userDetail = UserDetail(
                         number, playerId, deviceId
-                    )
-                    /*  Intent(this, VerifyNumberActivity::class.java).apply {
-                          putExtra(ProjectConstants.USER_DETAILS, userDetail)
-                          startActivity(this)
-                      }*/
+                    )*/
+                    editor = sharedPreferences.edit()
+                    editor.putString("deviceId", deviceId)
+                    editor.putString("number", number)
                     val intent = Intent(this, VerifyNumberActivity::class.java)
                     intent.putExtra("number", number)
                     intent.putExtra("playerId", playerId)
@@ -130,6 +142,13 @@ class LoginActivity : AppCompatActivity() {
         referralCode = binding.editReferralCode.text.toString().trim()
         deviceId = UUID.randomUUID().toString()
 
+        if (number.isEmpty()) {
+            Toast.makeText(this, "Phone number can't be empty", Toast.LENGTH_SHORT).show()
+            isAllFieldValidate = false
+        } else if (number.length < 10) {
+            Toast.makeText(this, "Please enter 10 digit number", Toast.LENGTH_SHORT).show()
+            isAllFieldValidate = false
+        }
         return isAllFieldValidate
     }
 }

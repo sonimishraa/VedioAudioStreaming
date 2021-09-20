@@ -1,4 +1,4 @@
-package com.tamasha.vedioaudiostreamingapp.ui.home
+package com.tamasha.vedioaudiostreamingapp.ui.sdkhome
 
 import android.os.Bundle
 import android.view.Menu
@@ -12,7 +12,7 @@ import com.tamasha.vedioaudiostreamingapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeActivity : AppCompatActivity() {
+class SdkHomeActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding

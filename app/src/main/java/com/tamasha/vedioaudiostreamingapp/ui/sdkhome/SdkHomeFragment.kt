@@ -1,4 +1,4 @@
-package com.tamasha.vedioaudiostreamingapp.ui.home
+package com.tamasha.vedioaudiostreamingapp.ui.sdkhome
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,7 +11,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.tamasha.vedioaudiostreamingapp.BuildConfig
-import com.tamasha.vedioaudiostreamingapp.databinding.FragmentHomeBinding
+import com.tamasha.vedioaudiostreamingapp.databinding.SdkFragmentHomeBinding
 import com.tamasha.vedioaudiostreamingapp.model.Constants.ENV_PROD
 import com.tamasha.vedioaudiostreamingapp.model.Constants.REGEX_MEETING_CODE
 import com.tamasha.vedioaudiostreamingapp.model.Constants.REGEX_MEETING_URL_CODE
@@ -32,7 +32,7 @@ private const val TAG = "HomeFragment"
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
-    lateinit var binding: FragmentHomeBinding
+    lateinit var binding: SdkFragmentHomeBinding
     lateinit var setting: SettingsStorePreferences
     lateinit var meetingUrl: String
     lateinit var userName: String
@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHomeBinding.inflate(layoutInflater)
+        binding = SdkFragmentHomeBinding.inflate(layoutInflater)
         return binding.root
 
     }

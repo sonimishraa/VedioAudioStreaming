@@ -1,7 +1,9 @@
 package com.tamasha.vedioaudiostreamingapp.ui.activity
 
+import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -10,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import com.google.android.gms.auth.api.phone.SmsRetriever
 import com.google.android.gms.auth.api.phone.SmsRetrieverClient
+import com.tamasha.vedioaudiostreamingapp.R
 import com.tamasha.vedioaudiostreamingapp.databinding.ActivityVerifyNumberBinding
 import com.tamasha.vedioaudiostreamingapp.model.request.NumberRegisterRequest
 import com.tamasha.vedioaudiostreamingapp.model.request.UserOtpRequest
@@ -39,6 +42,8 @@ class VerifyNumberActivity : AppCompatActivity() {
     lateinit var deviceId: String
     lateinit var playerId: String
     lateinit var referralCode: String
+    lateinit var sharedPreferences: SharedPreferences
+    lateinit var editor: SharedPreferences.Editor
     private lateinit var binding: ActivityVerifyNumberBinding
     val viewModel: VerifyOtpViewModel by viewModels()
     val loginViewModel: LoginViewModel by viewModels()
@@ -106,12 +111,29 @@ class VerifyNumberActivity : AppCompatActivity() {
         viewModel.verifyOtpResponse.observe(this, { response ->
             when (response.status) {
                 Status.SUCCESS -> {
-                    //Toast.makeText(this, "${response.data?.authToken}", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, MeetingActivity::class.java)
-                    startActivity(intent)
+                    if(response.data?.error?.code == "0") {
+                        val authToken = response.data.authToken
+                        sharedPreferences = getSharedPreferences(
+                            getString(R.string.share_pref),
+                            Context.MODE_PRIVATE
+                        )
+                        editor = sharedPreferences.edit()
+                        editor.putString(getString(R.string.sharedPref_authToken), authToken)
+                        response.data.newUser?.let {
+                            editor.putBoolean(
+                                getString(R.string.sharedPref_newUserStatus),
+                                it
+                            )
+                        }
+                        editor.apply()
+                        val intent = Intent(this, MeetingActivity::class.java)
+                        startActivity(intent)
+                    }else{
+                        Toast.makeText(this, "Enter correct OTP", Toast.LENGTH_SHORT).show()
+                    }
                 }
                 Status.ERROR -> {
-                    Log.e(TAG, "observeLiveData: $response")
+                    Log.e(TAG, "observeLiveData: ${response}")
                     Toast.makeText(
                         this,
                         response.message,
