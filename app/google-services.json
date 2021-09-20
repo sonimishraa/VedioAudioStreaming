@@ -36,6 +36,35 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:551004692159:android:3e37dfffce51f15deff00a",
+        "android_client_info": {
+          "package_name": "com.tamasha.vedioaudiostreamingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "551004692159-62068m7lkp22qg4ke9pq6etrr3pk7d2s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCM4fCCA_AbUdSxg2aYSJj7b8sWtjTz6Rg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "551004692159-62068m7lkp22qg4ke9pq6etrr3pk7d2s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:551004692159:android:1d09cb0502be37ffeff00a",
         "android_client_info": {
           "package_name": "live.hms.app2"

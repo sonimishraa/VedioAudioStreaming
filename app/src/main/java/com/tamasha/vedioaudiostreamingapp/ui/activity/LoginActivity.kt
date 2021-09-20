@@ -19,6 +19,7 @@ import com.tamasha.vedioaudiostreamingapp.viewmodel.LoginViewModel
 import com.truecaller.android.sdk.*
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
+import kotlin.concurrent.timer
 
 private const val TAG = "LoginActivity"
 
@@ -38,8 +39,15 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        initView()
         initListener()
         initObserver()
+    }
+
+    private fun initView() {
+        initTrueCaller()
+        TruecallerSDK.getInstance().isUsable
+        TruecallerSDK.getInstance().getUserProfile(this)
     }
 
     private fun initListener() {
@@ -154,7 +162,7 @@ class LoginActivity : AppCompatActivity() {
         return isAllFieldValidate
     }
 
-    fun truecallerInstance() {
+    fun initTrueCaller() {
         val trueScope = TruecallerSdkScope.Builder(this, sdkCallback)
             .consentMode(TruecallerSdkScope.CONSENT_MODE_POPUP)
             .consentTitleOption(TruecallerSdkScope.SDK_CONSENT_TITLE_VERIFY)
@@ -166,23 +174,29 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, @Nullable data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (TruecallerSDK.getInstance().isUsable) {
-            TruecallerSDK.getInstance()
-                .onActivityResultObtained(this, requestCode, resultCode, data)
+        if (requestCode == TruecallerSDK.SHARE_PROFILE_REQUEST_CODE) {
+            if (resultCode == RESULT_OK && data != null) {
+                TruecallerSDK.getInstance().isUsable
+                TruecallerSDK.getInstance()
+                    .onActivityResultObtained(this, requestCode, resultCode, data)
+            }
         }
     }
 
     object sdkCallback : ITrueCallback {
-        override fun onSuccessProfileShared(p0: TrueProfile) {
+        override fun onSuccessProfileShared(success: TrueProfile) {
+            Log.i("LoginActivity","onSuccess :{${success.accessToken}}")
+            val accessToken = success.accessToken
+            val endPoint = "https://api4.truecaller.com/v1/otp/installation/phoneNumberDetail/{$accessToken}"
 
         }
 
-        override fun onFailureProfileShared(p0: TrueError) {
-
+        override fun onFailureProfileShared(error: TrueError) {
+            Log.i("LoginActivity","onFailure ${error.errorType} :: $error")
         }
 
         override fun onVerificationRequired(p0: TrueError?) {
-
+            Log.i("LoginActivity","onVerification")
         }
     }
 
