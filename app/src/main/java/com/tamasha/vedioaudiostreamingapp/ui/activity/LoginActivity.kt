@@ -58,7 +58,7 @@ class LoginActivity : AppCompatActivity() {
     private fun initListener() {
         binding.referralCode.setOnClickListener {
             binding.referralCode.visibility = View.GONE
-            binding.layoutEditReferral.visibility = View.VISIBLE
+            binding.editReferralCode.visibility = View.VISIBLE
             binding.buttonLogin.visibility = View.VISIBLE
             binding.trucallerText.visibility = View.GONE
             binding.buttonTruecallerLogin.visibility = View.GONE
@@ -75,7 +75,7 @@ class LoginActivity : AppCompatActivity() {
             binding.referralCode.visibility = View.GONE
             binding.buttonLogin.visibility = View.GONE
             binding.truecallerReferralCode.visibility = View.GONE
-            binding.layoutEditReferral.visibility = View.VISIBLE
+            binding.editReferralCode.visibility = View.VISIBLE
             binding.buttonTruecallerLogin.visibility = View.VISIBLE
         }
 
