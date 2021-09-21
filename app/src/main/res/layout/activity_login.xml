@@ -49,7 +49,7 @@
             android:text="@string/_91"
             android:textColor="@color/darkGray"
             android:textColorHint="@color/gray"
-            android:textSize="16px" />
+            android:textSize="18dp" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_Number"
@@ -107,12 +107,13 @@
             android:hint="Referral Code (Optional)"
             android:layout_below="@+id/truecaller_referral_code"
             android:layout_marginStart="84dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="84dp"
-            android:visibility="visible"
+            android:padding="16dp"
+            android:visibility="gone"
             android:textColorHint="@color/darkGray"
             android:background="@drawable/input_text_backgroud"
-            android:textSize="12dp"
+            android:textSize="14dp"
             android:textColor="@color/white"
             android:gravity="center"/>
 
