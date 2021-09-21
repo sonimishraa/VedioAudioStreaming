@@ -52,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
         //initView()
         initListener()
         initObserver()
-        trueCallerAccessToken()
+       // trueCallerAccessToken()
     }
 
     private fun initListener() {
