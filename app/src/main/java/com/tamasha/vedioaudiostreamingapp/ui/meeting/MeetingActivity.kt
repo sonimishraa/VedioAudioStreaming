@@ -26,7 +26,7 @@ class MeetingActivity : AppCompatActivity() {
         //setSupportActionBar(binding.toolbar)
 
         val navController = findNavController(R.id.nav_host_fragment_meeting)
-        /*appBarConfiguration = AppBarConfiguration(navController.graph)
+       /* appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)*/
 
         /* binding.fab.setOnClickListener { view ->

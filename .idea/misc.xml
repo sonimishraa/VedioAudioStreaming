@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/DELL/Desktop/VedioAudioStreamingApp/app/src/main/res/layout/activity_home.xml" value="0.14166666666666666" />
+        <entry key="..\:/Users/DELL/Desktop/VedioAudioStreamingApp/app/src/main/res/layout/activity_login.xml" value="0.14739583333333334" />
+        <entry key="..\:/Users/DELL/Desktop/VedioAudioStreamingApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.12291666666666666" />
         <entry key="..\:/Users/DELL/Documents/VedioAudioStreamingApp/app/src/main/res/drawable-v24/outline_background.xml" value="0.11018518518518519" />
         <entry key="..\:/Users/DELL/Documents/VedioAudioStreamingApp/app/src/main/res/drawable/ic_baseline_play_circle_filled_24.xml" value="0.1037037037037037" />
         <entry key="..\:/Users/DELL/Documents/VedioAudioStreamingApp/app/src/main/res/layout/activity_dashboard.xml" value="0.16302083333333334" />

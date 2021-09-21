@@ -1,5 +1,6 @@
 package com.tamasha.vedioaudiostreamingapp.ui.activity
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -13,42 +14,45 @@ import androidx.appcompat.app.AppCompatActivity
 import com.tamasha.vedioaudiostreamingapp.R
 import com.tamasha.vedioaudiostreamingapp.databinding.ActivityLoginBinding
 import com.tamasha.vedioaudiostreamingapp.model.request.NumberRegisterRequest
+import com.tamasha.vedioaudiostreamingapp.model.request.TrueCallerRegisterRequest
 import com.tamasha.vedioaudiostreamingapp.model.request.UserOtpRequest
 import com.tamasha.vedioaudiostreamingapp.tokennetwork.Status
 import com.tamasha.vedioaudiostreamingapp.ui.HomeActivity
 import com.tamasha.vedioaudiostreamingapp.viewmodel.LoginViewModel
 import com.truecaller.android.sdk.*
+import com.truecaller.android.sdk.clients.VerificationCallback
+import com.truecaller.android.sdk.clients.VerificationDataBundle
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
-import kotlin.concurrent.timer
+
 
 private const val TAG = "LoginActivity"
+
 
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityLoginBinding
     val viewModel: LoginViewModel by viewModels()
+    var requestCode: Int = 1
     lateinit var number: String
     lateinit var deviceId: String
     lateinit var referralCode: String
     lateinit var playerId: String
-    lateinit var sharedPreferences:SharedPreferences
-    lateinit var editor:SharedPreferences.Editor
+    lateinit var sharedPreferences: SharedPreferences
+    lateinit var editor: SharedPreferences.Editor
+    lateinit var accessToken: String
+    lateinit var firstName: String
+    lateinit var lastName: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        initView()
+        //initView()
         initListener()
         initObserver()
-    }
-
-    private fun initView() {
-        initTrueCaller()
-        TruecallerSDK.getInstance().isUsable
-        TruecallerSDK.getInstance().getUserProfile(this)
+        trueCallerAccessToken()
     }
 
     private fun initListener() {
@@ -85,11 +89,11 @@ class LoginActivity : AppCompatActivity() {
             }
         }
         binding.buttonTruecallerLogin.setOnClickListener {
-           /* if (validateFields()) {
-                val request =
-                    NumberRegisterRequest(MobileNumber = number, DeviceID = deviceId, referralCode)
-                viewModel.registerNumberRequest(request)
-            }*/
+            accessToken = VerificationDataBundle().profile?.accessToken.toString()
+            val endpoint =
+                "https://api4.truecaller.com/v1/otp/installation/phoneNumberDetail/{$accessToken}"
+            val trueCallerRequest = TrueCallerRegisterRequest(requestId = "", accessToken, endpoint)
+            viewModel.trueCallerRegisterRequest(trueCallerRequest)
         }
     }
 
@@ -100,12 +104,15 @@ class LoginActivity : AppCompatActivity() {
                     response.data?.data?.let {
                         playerId = it.playerId
                         sharedPreferences = getSharedPreferences(
-                        getString(R.string.share_pref),
-                        Context.MODE_PRIVATE
-                    )
+                            getString(R.string.share_pref),
+                            Context.MODE_PRIVATE
+                        )
                         editor = sharedPreferences.edit()
                         editor.putString(getString(R.string.sharePref_playerId), it.playerId)
-                        editor.putBoolean(getString(R.string.sharedPref_loginStatus), it.alreadyLoggedIn)
+                        editor.putBoolean(
+                            getString(R.string.sharedPref_loginStatus),
+                            it.alreadyLoggedIn
+                        )
                         editor.putInt(getString(R.string.sharedPref_walletId), it.walletId)
                         editor.apply()
                         val request = UserOtpRequest(number, playerId, deviceId)
@@ -127,10 +134,10 @@ class LoginActivity : AppCompatActivity() {
         viewModel.userOtpResponse.observe(this, { response ->
             when (response.status) {
                 Status.SUCCESS -> {
-                  /*  val data = response.data!!
-                    val userDetail = UserDetail(
-                        number, playerId, deviceId
-                    )*/
+                    /*  val data = response.data!!
+                      val userDetail = UserDetail(
+                          number, playerId, deviceId
+                      )*/
                     editor = sharedPreferences.edit()
                     editor.putString("deviceId", deviceId)
                     editor.putString("number", number)
@@ -157,14 +164,14 @@ class LoginActivity : AppCompatActivity() {
             when (response.status) {
                 Status.SUCCESS -> {
                     Toast.makeText(this, "Logged in with TrueCaller", Toast.LENGTH_SHORT).show()
-                   /* editor = sharedPreferences.edit()
-                    editor.putString("deviceId", deviceId)
-                    editor.putString("number", number)
-                    val intent = Intent(this, VerifyNumberActivity::class.java)
-                    intent.putExtra("number", number)
-                    intent.putExtra("playerId", playerId)
-                    intent.putExtra("deviceId", deviceId)
-                    intent.putExtra("referralCode", referralCode)*/
+                    /* editor = sharedPreferences.edit()
+                     editor.putString("deviceId", deviceId)
+                     editor.putString("number", number)
+                     val intent = Intent(this, VerifyNumberActivity::class.java)
+                     intent.putExtra("number", number)
+                     intent.putExtra("playerId", playerId)
+                     intent.putExtra("deviceId", deviceId)
+                     intent.putExtra("referralCode", referralCode)*/
                     val intent = Intent(this, HomeActivity::class.java)
                     startActivity(intent)
                 }
@@ -218,26 +225,90 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+
     object sdkCallback : ITrueCallback {
         override fun onSuccessProfileShared(success: TrueProfile) {
-            Log.i("LoginActivity","onSuccess :{${success.accessToken}}")
-            val accessToken = success.accessToken
-            val endPoint = "https://api4.truecaller.com/v1/otp/installation/phoneNumberDetail/{$accessToken}"
+            val activity: Activity = LoginActivity()
+            activity.runOnUiThread {
+                //Toast.makeText(activity, "accessToken:{${success.accessToken}}", Toast.LENGTH_SHORT).show()
+                /* accessToken = success.accessToken
+                val endPoint = "https://api4.truecaller.com/v1/otp/installation/phoneNumberDetail/{$accessToken}"
+*/
+            }
+            Log.i("LoginActivity", "onSuccess :{${success.accessToken}}")
 
         }
 
         override fun onFailureProfileShared(error: TrueError) {
-            Log.i("LoginActivity","onFailure ${error.errorType} :: $error")
+            Log.i("LoginActivity", "onFailure ${error.errorType} :: $error")
         }
 
-        override fun onVerificationRequired(p0: TrueError?) {
-            Log.i("LoginActivity","onVerification")
+        override fun onVerificationRequired(error: TrueError?) {
+            Log.i("LoginActivity", "onVerification")
+        }
+    }
+
+    object apiCallback : VerificationCallback {
+        override fun onRequestSuccess(requestCode: Int, extras: VerificationDataBundle?) {
+            if (requestCode == VerificationCallback.TYPE_MISSED_CALL_INITIATED) {
+                if (extras != null)
+                    extras.getString(VerificationDataBundle.KEY_TTL)
+            }
+
+            if (requestCode == VerificationCallback.TYPE_MISSED_CALL_RECEIVED) {
+
+            }
+
+            if (requestCode == VerificationCallback.TYPE_OTP_INITIATED) {
+                if (extras != null) {
+                    extras.getString(VerificationDataBundle.KEY_TTL)
+                }
+            }
+
+            if (requestCode == VerificationCallback.TYPE_OTP_RECEIVED) {
+
+            }
+
+            if (requestCode == VerificationCallback.TYPE_VERIFICATION_COMPLETE) {
+                if (extras != null) {
+                    extras.getString(VerificationDataBundle.KEY_ACCESS_TOKEN)
+                    Log.i("LoginActivity", "accessToken:{${extras.profile?.accessToken}")
+                }
+
+            }
+
+            if (requestCode == VerificationCallback.TYPE_PROFILE_VERIFIED_BEFORE) {
+                extras?.getProfile()?.accessToken
+
+            }
+        }
+
+        override fun onRequestFailure(requestCode: Int, e: TrueException) {
+
+        }
+    }
+
+    private fun trueCallerAccessToken() {
+        initTrueCaller()
+        TruecallerSDK.getInstance().isUsable
+        TruecallerSDK.getInstance().getUserProfile(this)
+        if (validateFields()) {
+            TruecallerSDK.getInstance().requestVerification("+91", number, apiCallback, this)
+            val profile: TrueProfile = TrueProfile.Builder(firstName, lastName).build()
+            TruecallerSDK.getInstance().verifyMissedCall(profile, apiCallback)
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
         TruecallerSDK.clear()
+    }
+
+    private fun showToast(text: String) {
+        val activity: Activity = LoginActivity()
+        if (activity != null) {
+            activity.runOnUiThread { Toast.makeText(activity, text, Toast.LENGTH_SHORT).show() }
+        }
     }
 
 }

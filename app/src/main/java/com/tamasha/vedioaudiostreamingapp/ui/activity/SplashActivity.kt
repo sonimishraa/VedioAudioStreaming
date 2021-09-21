@@ -45,7 +45,7 @@ class SplashActivity : AppCompatActivity() {
     private fun checkLoginStatus(): Boolean {
         sharedPreferences =
             getSharedPreferences(getString(R.string.share_pref), Context.MODE_PRIVATE)
-        val loginStatus = sharedPreferences.getBoolean(getString(R.string.sharedPref_loginStatus),false)
+        val loginStatus = sharedPreferences.getBoolean(getString(R.string.sharedPref_loginStatus),true)
         return loginStatus
     }
 
