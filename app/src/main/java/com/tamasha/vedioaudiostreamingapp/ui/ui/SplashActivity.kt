@@ -1,4 +1,4 @@
-package com.tamasha.vedioaudiostreamingapp.ui.activity
+package com.tamasha.vedioaudiostreamingapp.ui.ui
 
 import android.content.Context
 import android.content.Intent
@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.Handler
 import com.tamasha.vedioaudiostreamingapp.R
 import com.tamasha.vedioaudiostreamingapp.databinding.ActivitySplashBinding
+import com.tamasha.vedioaudiostreamingapp.ui.ui.ui.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,7 +26,7 @@ class SplashActivity : AppCompatActivity() {
     private fun initView() {
         Handler().postDelayed({
             if (checkLoginStatus()) {
-                val mIntent = Intent(this@SplashActivity, LoginActivity::class.java)
+                val mIntent = Intent(this@SplashActivity, HomeActivity::class.java)
                 startActivity(mIntent)
             }
             else {
