@@ -6,7 +6,10 @@
     <uses-sdk tools:overrideLibrary="com.truecaller.android.sdk" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"
+        android:maxSdkVersion="29" />
+    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS"/>
 
     <application
         android:name=".MainApplication"
@@ -17,7 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VedioAudioStreamingApp">
         <activity
-            android:name=".ui.ui.ui.HomeActivity"
+            android:name=".uis.HomeActivity"
             android:exported="true"
             android:label="@string/title_activity_home"
             android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar" >
@@ -33,7 +36,7 @@
         </receiver>
 
         <activity
-            android:name=".ui.ui.SplashActivity"
+            android:name=".uis.SplashActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Tamasha.live.NoActionBar">
@@ -44,12 +47,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.ui.VerifyNumberActivity"
+            android:name=".uis.VerifyNumberActivity"
             android:exported="true"
             android:label="@string/title_activity_verify_number"
             android:theme="@style/Theme.Tamasha.live.NoActionBar" />
         <activity
-            android:name=".ui.ui.LoginActivity"
+            android:name=".uis.LoginActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Tamasha.live.NoActionBar"></activity>

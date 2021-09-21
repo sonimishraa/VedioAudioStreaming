@@ -1,4 +1,4 @@
-package com.tamasha.vedioaudiostreamingapp.ui.ui.ui
+package com.tamasha.vedioaudiostreamingapp.uis
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -26,7 +26,7 @@ class HomeActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+                R.id.navigation_home, R.id.navigation_discover, R.id.navigation_play,R.id.navigation_club,R.id.navigation_refresh
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

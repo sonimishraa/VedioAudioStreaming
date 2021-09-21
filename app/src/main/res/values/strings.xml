@@ -32,7 +32,6 @@
     <string name="trucaller_text">Do you have truecaller id? Login Here</string>
     <string name="share_pref">Login_Response_SharedPref</string>
     <string name="title_activity_home">HomeActivity</string>
-    <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="sharePref_playerId">playerId</string>
     <string name="sharedPref_loginStatus">alreadyLoggedIn</string>

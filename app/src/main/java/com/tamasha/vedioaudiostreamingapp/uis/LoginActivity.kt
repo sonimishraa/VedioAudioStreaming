@@ -1,4 +1,4 @@
-package com.tamasha.vedioaudiostreamingapp.ui.ui
+package com.tamasha.vedioaudiostreamingapp.uis
 
 import android.app.Activity
 import android.content.Context
@@ -17,7 +17,6 @@ import com.tamasha.vedioaudiostreamingapp.model.request.NumberRegisterRequest
 import com.tamasha.vedioaudiostreamingapp.model.request.TrueCallerRegisterRequest
 import com.tamasha.vedioaudiostreamingapp.model.request.UserOtpRequest
 import com.tamasha.vedioaudiostreamingapp.tokennetwork.Status
-import com.tamasha.vedioaudiostreamingapp.ui.ui.ui.HomeActivity
 import com.tamasha.vedioaudiostreamingapp.viewmodel.LoginViewModel
 import com.truecaller.android.sdk.*
 import com.truecaller.android.sdk.clients.VerificationCallback

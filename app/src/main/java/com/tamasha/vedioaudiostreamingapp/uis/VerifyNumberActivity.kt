@@ -1,4 +1,4 @@
-package com.tamasha.vedioaudiostreamingapp.ui.ui
+package com.tamasha.vedioaudiostreamingapp.uis
 
 import android.content.Context
 import android.content.Intent
@@ -19,7 +19,6 @@ import com.tamasha.vedioaudiostreamingapp.model.request.UserOtpRequest
 import com.tamasha.vedioaudiostreamingapp.model.request.VerifyOtpRequest
 import com.tamasha.vedioaudiostreamingapp.network.SmsBroadCastReceiver
 import com.tamasha.vedioaudiostreamingapp.tokennetwork.Status
-import com.tamasha.vedioaudiostreamingapp.ui.ui.ui.HomeActivity
 import com.tamasha.vedioaudiostreamingapp.viewmodel.LoginViewModel
 import com.tamasha.vedioaudiostreamingapp.viewmodel.VerifyOtpViewModel
 import dagger.hilt.android.AndroidEntryPoint
