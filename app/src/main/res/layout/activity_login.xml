@@ -30,52 +30,40 @@
         android:id="@+id/layout_edit_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="22dp"
         android:layout_below="@id/textView"
-        android:layout_marginEnd="22dp">
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="22dp"
+        android:orientation="horizontal">
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+        <androidx.appcompat.widget.AppCompatEditText
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="42dp"
+            android:layout_marginRight="1dp"
             android:layout_weight=".3"
-            android:textColorHint="@color/white"
-            android:layout_marginRight="2dp">
+            android:background="@drawable/input_text_backgroud"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:gravity="center"
+            android:text="@string/_91"
+            android:textColor="@color/darkGray"
+            android:textColorHint="@color/gray"
+            android:textSize="16px" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:background="@color/purple_700"
-                android:textColor="@color/white"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:text="@string/_91" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:id="@+id/layout_number"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_Number"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="42dp"
+            android:layout_gravity="start"
+            android:layout_weight="1"
+            android:background="@drawable/input_text_backgroud"
+            android:gravity="center"
             android:hint="@string/enter_mobile_no"
-            app:hintTextColor="@color/white"
-            android:textColorHint="@color/white"
-            android:layout_weight="1">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_Number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/purple_700"
-                android:textSize="16dp"
-                android:textColor="@color/white"
-                android:gravity="center"
-                android:layout_gravity="start"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
+            android:textColor="@color/gray"
+            android:textColorHint="@color/darkGray"
+            android:textSize="16px"
+            app:hintTextColor="@color/darkGray" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -90,7 +78,7 @@
         android:padding="8dp"
         android:layout_marginStart="22dp"
         android:layout_marginEnd="22dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:textSize="14dp"/>
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -140,8 +128,8 @@
         android:background="@drawable/button_backgound"
         android:text="@string/next"
         android:textColor="@color/white"
-        android:layout_marginStart="22dp"
-        android:layout_marginEnd="22dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginEnd="59dp"
         android:layout_marginTop="25dp"/>
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -153,7 +141,7 @@
         android:text="@string/trucaller_text"
         android:gravity="center"
         android:padding="8dp"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_marginStart="22dp"
         android:layout_marginEnd="22dp"
         android:layout_marginTop="8dp"
@@ -172,9 +160,9 @@
         android:textStyle="bold"
         android:visibility="gone"
         android:textAlignment="center"
-        android:textColor="@color/purple_500"
-        android:layout_marginStart="22dp"
-        android:layout_marginEnd="22dp"
+        android:textColor="@color/text_input_background"
+        android:layout_marginStart="59dp"
+        android:layout_marginEnd="59dp"
         android:layout_marginTop="25dp"/>
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -184,8 +172,8 @@
         android:text="@string/terms_condition_text"
         android:textColor="@color/darkGray"
         android:layout_marginBottom="20dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginEnd="22dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginEnd="84dp"
         android:gravity="center"
         android:layout_alignParentBottom="true"/>
 

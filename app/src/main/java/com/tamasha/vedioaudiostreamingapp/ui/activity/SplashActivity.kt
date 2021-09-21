@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.os.Handler
 import com.tamasha.vedioaudiostreamingapp.R
 import com.tamasha.vedioaudiostreamingapp.databinding.ActivitySplashBinding
-import com.tamasha.vedioaudiostreamingapp.ui.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

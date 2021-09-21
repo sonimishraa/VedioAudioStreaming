@@ -30,7 +30,7 @@ import dagger.hilt.android.AndroidEntryPoint
 private const val TAG = "HomeFragment"
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class SdkHomeFragment : Fragment() {
 
     lateinit var binding: SdkFragmentHomeBinding
     lateinit var setting: SettingsStorePreferences
