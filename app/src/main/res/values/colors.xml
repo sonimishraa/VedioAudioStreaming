@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <color name="color_primary">#211E3F</color>
+    <color name="colorPrimary">#211E3F</color>
     <color name="color_primaryDark">#FF000000</color>
     <color name="color_Secondry">#161553</color>
     <color name="text_input_background">#211E3F</color>

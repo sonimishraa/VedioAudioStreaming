@@ -23,7 +23,7 @@
             android:name=".uis.HomeActivity"
             android:exported="true"
             android:label="@string/title_activity_home"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" >
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
         </activity>
 
         <receiver
