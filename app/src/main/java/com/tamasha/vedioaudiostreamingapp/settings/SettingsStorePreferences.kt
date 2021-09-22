@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Build
 import androidx.core.content.edit
-import com.tamasha.vedioaudiostreamingapp.meeting.MeetingViewMode
 import live.hms.video.utils.HMSLogger
 
 class SettingsStorePreferences(context: Context) {
@@ -182,7 +181,7 @@ class SettingsStorePreferences(context: Context) {
         get() = sharedPreferences.getBoolean(SHOW_RECONNECTING_PROGRESS_BARS, true)
         set(value) = putBoolean(SHOW_RECONNECTING_PROGRESS_BARS, value)
 
-    var meetingMode: MeetingViewMode
+    /*var meetingMode: MeetingViewMode
         get() {
             val str = sharedPreferences.getString(
                 MEETING_MODE,
@@ -191,7 +190,7 @@ class SettingsStorePreferences(context: Context) {
             return MeetingViewMode.valueOf(str)
         }
         set(value) = putString(MEETING_MODE, value.toString())
-
+*/
     var logLevelWebrtc: HMSLogger.LogLevel
         get() {
             val str = sharedPreferences.getString(

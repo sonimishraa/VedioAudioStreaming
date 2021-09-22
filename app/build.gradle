@@ -13,7 +13,7 @@ android {
     compileSdk 30
 
     defaultConfig {
-        applicationId "com.iotric.vedioaudiostreamingapp"
+        applicationId "com.tamasha.vedioaudiostreamingapp"
         minSdk 24
         versionCode 1
         versionName "1.0"
@@ -154,6 +154,7 @@ dependencies {
     implementation "com.google.android.gms:play-services-auth-api-phone:17.5.1"
 
     // TrueCaller Sdk
+    implementation "com.truecaller.android.sdk:truecaller-sdk:2.6.0"
 
 }
 kapt {

@@ -25,9 +25,33 @@
     <string name="title_activity_verify_number">VerifyNumberActivity</string>
     <string name="next">Next</string>
     <string name="terms_condition_text">We are committed to safeguarding the privacy of our Users</string>
-    <string name="enter_mobile_no">Phone Number*</string>
+    <string name="enter_mobile_no">Enter mobile no.</string>
     <string name="_91">+91</string>
     <string name="referral_code_text">Do you have referral code? Click here</string>
-    <string name="partnerKey">appKey</string>
+    <string name="partnerKey">AGekQ4525877e047847b4afd6fdaf9eb9b776</string>
     <string name="trucaller_text">Do you have truecaller id? Login Here</string>
+    <string name="share_pref">Login_Response_SharedPref</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="sharePref_playerId">playerId</string>
+    <string name="sharedPref_loginStatus">alreadyLoggedIn</string>
+    <string name="sharedPref_walletId">walletId</string>
+    <string name="sharedPref_authToken">authToken</string>
+    <string name="sharedPref_newUserStatus">newUser</string>
+    <string name="title_home">Home</string>
+    <string name="title_discover">Discover</string>
+    <string name="title_play">Play</string>
+    <string name="title_club">Club</string>
+    <string name="refresh_earn"><![CDATA[Refresh & Earn]]></string>
+    <string name="title_activity_dashboard">DashboardActivity</string>
+    <string name="title_activity_navigation_drawer2">NavigationDrawer2Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
 </resources>

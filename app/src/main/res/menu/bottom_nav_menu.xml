@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/icon_home"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/navigation_discover"
+        android:icon="@drawable/discover_icon"
+        android:title="@string/title_discover" />
+
+    <item
+        android:id="@+id/navigation_play"
+        android:icon="@drawable/ic_play"
+        android:title="@string/title_play" />
+    <item
+        android:id="@+id/navigation_club"
+        android:icon="@drawable/club_icon"
+        android:title="@string/title_club" />
+    <group>
+        <item
+            android:id="@+id/navigation_refresh"
+            android:icon="@drawable/icon_refresh"
+            android:title="@string/refresh_earn" />
+    </group>
+
+
+
+
+</menu>

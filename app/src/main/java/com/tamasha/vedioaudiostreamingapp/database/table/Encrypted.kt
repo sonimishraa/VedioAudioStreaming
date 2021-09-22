@@ -1,4 +1,4 @@
-package com.tamasha.vedioaudiostreamingapp.database.dao
+package com.tamasha.vedioaudiostreamingapp.database.table
 
 import androidx.annotation.Keep
 import androidx.room.Entity

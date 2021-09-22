@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
     android:orientation="vertical"
-    tools:context=".ui.activity.LoginActivity">
+    tools:context=".ui.ui.LoginActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -30,53 +30,44 @@
         android:id="@+id/layout_edit_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="22dp"
         android:layout_below="@id/textView"
-        android:layout_marginEnd="22dp">
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="22dp"
+        android:orientation="horizontal">
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+        <androidx.appcompat.widget.AppCompatEditText
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="54dp"
+            android:layout_marginRight="1dp"
             android:layout_weight=".3"
-            android:textColorHint="@color/white"
-            android:layout_marginRight="4dp">
+            android:background="@drawable/input_text_backgroud"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:gravity="center"
+            android:text="@string/_91"
+            android:textColor="@color/darkGray"
+            android:textColorHint="@color/gray"
+            android:textSize="18dp" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/outline_background"
-                android:textSize="16dp"
-                android:textColor="@color/white"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:text="@string/_91" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:id="@+id/layout_number"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_Number"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="54dp"
+            android:layout_gravity="start"
+            android:layout_weight="1"
+            android:background="@drawable/input_text_backgroud"
+            android:gravity="start"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:paddingLeft="25dp"
             android:hint="@string/enter_mobile_no"
-            app:hintTextColor="@color/white"
-            android:textColorHint="@color/white"
-            android:layout_weight="1">
-
-            <com.google.android.material.textfield.TextInputEditText
-
-                android:background="@drawable/outline_background"
-                android:id="@+id/edit_Number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:textColor="@color/white"
-                android:gravity="center"
-                android:layout_gravity="start"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
+            android:textColor="@color/gray"
+            android:textColorHint="@color/darkGray"
+            android:inputType="number"
+            android:textSize="18dp"
+            app:hintTextColor="@color/darkGray" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -91,7 +82,7 @@
         android:padding="8dp"
         android:layout_marginStart="22dp"
         android:layout_marginEnd="22dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:textSize="14dp"/>
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -109,40 +100,33 @@
         android:layout_marginTop="8dp"
         android:textSize="14dp"/>
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:id="@+id/layout_edit_referral"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Referral Code (Optional)"
-        android:layout_below="@+id/truecaller_referral_code"
-        android:layout_marginStart="59dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="59dp"
-        android:visibility="gone"
-        android:textColorHint="@color/white">
-
-        <com.google.android.material.textfield.TextInputEditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/edit_referral_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/outline_background"
-            android:textSize="12dp"
+            android:hint="Referral Code (Optional)"
+            android:layout_below="@+id/truecaller_referral_code"
+            android:layout_marginStart="84dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="84dp"
+            android:padding="16dp"
+            android:visibility="gone"
+            android:textColorHint="@color/darkGray"
+            android:background="@drawable/input_text_backgroud"
+            android:textSize="14dp"
             android:textColor="@color/white"
             android:gravity="center"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/layout_edit_referral"
+        android:layout_below="@id/edit_referral_code"
         android:background="@drawable/button_backgound"
         android:text="@string/next"
         android:textColor="@color/white"
-        android:layout_marginStart="22dp"
-        android:layout_marginEnd="22dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginEnd="59dp"
         android:layout_marginTop="25dp"/>
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -154,7 +138,7 @@
         android:text="@string/trucaller_text"
         android:gravity="center"
         android:padding="8dp"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_marginStart="22dp"
         android:layout_marginEnd="22dp"
         android:layout_marginTop="8dp"
@@ -173,9 +157,9 @@
         android:textStyle="bold"
         android:visibility="gone"
         android:textAlignment="center"
-        android:textColor="@color/purple_500"
-        android:layout_marginStart="22dp"
-        android:layout_marginEnd="22dp"
+        android:textColor="@color/text_input_background"
+        android:layout_marginStart="59dp"
+        android:layout_marginEnd="59dp"
         android:layout_marginTop="25dp"/>
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -185,8 +169,8 @@
         android:text="@string/terms_condition_text"
         android:textColor="@color/darkGray"
         android:layout_marginBottom="20dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginEnd="22dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginEnd="84dp"
         android:gravity="center"
         android:layout_alignParentBottom="true"/>
 
