@@ -3,6 +3,7 @@ package com.tamasha.vedioaudiostreamingapp.uis
 import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.Navigation
@@ -26,9 +27,18 @@ class HomeActivity : AppCompatActivity()/*, NavigationView.OnNavigationItemSelec
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initToolbar()
-//        initView()
+        initView()
         initNavigation()
 //        initListener()
+    }
+
+    private fun initView() {
+        drawerLayout = binding.drawerLayout
+        val headerView = binding.navView.inflateHeaderView(R.layout.nav_drawer_header)
+        val btn_closeDrawer = headerView.findViewById<AppCompatImageView>(R.id.close_drawer)
+        btn_closeDrawer.setOnClickListener {
+            drawerLayout.close()
+        }
     }
 
     private fun initNavigation() {
@@ -37,7 +47,7 @@ class HomeActivity : AppCompatActivity()/*, NavigationView.OnNavigationItemSelec
             R.id.navigation_discover, R.id.navigation_club,
             R.id.navigation_play, R.id.navigation_refresh,
             R.id.navigation_home
-        ).setDrawerLayout(binding.drawerLayout).build()
+        ).setDrawerLayout(drawerLayout).build()
         val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration )
         NavigationUI.setupWithNavController(binding.navView, navController)

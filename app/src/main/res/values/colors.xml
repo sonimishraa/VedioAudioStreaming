@@ -16,6 +16,7 @@
     <color name="gray">#E5E5E5</color>
     <color name="darkGray">#56546A</color>
     <color name="buttonColor">#EC008C</color>
+    <color name="pager_card_color">#10113A</color>
     <color name="mtrl_textinput_color" tools:override="false">#FFFFFFFF</color>
 
 </resources>

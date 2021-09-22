@@ -9,9 +9,9 @@ import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.android.gms.common.api.Status
 import dagger.hilt.android.AndroidEntryPoint
 
-class SmsBroadCastReceiver(private val listener: smsBroadCastListener) : BroadcastReceiver() {
+class SmsBroadCastReceiver() : BroadcastReceiver() {
 
-    override fun onReceive(context: Context?, intent: Intent?) {
+    /*override fun onReceive(context: Context?, intent: Intent?) {
 
         if (intent?.action == SmsRetriever.SMS_RETRIEVED_ACTION) {
             val extras: Bundle = intent.extras!!
@@ -36,5 +36,21 @@ class SmsBroadCastReceiver(private val listener: smsBroadCastListener) : Broadca
         fun onSuccess(intent: Intent)
 
         fun onFailure()
+    }*/
+
+
+    override fun onReceive(context: Context?, intent: Intent) {
+        if (SmsRetriever.SMS_RETRIEVED_ACTION == intent.action) {
+            val extras = intent.extras
+            val status = extras!![SmsRetriever.EXTRA_STATUS] as Status?
+            when (status!!.statusCode) {
+                CommonStatusCodes.SUCCESS -> {
+                    val  message: String? = extras[SmsRetriever.EXTRA_SMS_MESSAGE] as String?
+                }          // Get SMS message contents
+
+                CommonStatusCodes.TIMEOUT -> {
+                }
+            }
+        }
     }
 }

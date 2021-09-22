@@ -1,16 +1,14 @@
 package com.tamasha.vedioaudiostreamingapp.uis.home
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import com.google.android.material.navigation.NavigationView
+import com.google.android.material.tabs.TabLayout.INDICATOR_GRAVITY_BOTTOM
+import com.google.android.material.tabs.TabLayout.INDICATOR_GRAVITY_CENTER
 import com.tamasha.vedioaudiostreamingapp.R
 import com.tamasha.vedioaudiostreamingapp.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,8 +31,17 @@ class HomeFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //initView()
+        initView()
         //initListener()
+    }
+
+    private fun initView() {
+        //binding.appbar.toolbarTitle.text = getString(R.string.appointment_toolbar_title)
+        binding.viewPager.adapter = HomePagerAdapter(childFragmentManager)
+        binding.tablayout.setupWithViewPager(binding.viewPager)
+         binding.tablayout.setSelectedTabIndicatorColor(Color.parseColor("#EC008C"))
+        binding.tablayout.setSelectedTabIndicatorGravity(INDICATOR_GRAVITY_BOTTOM)
+
     }
 
 }

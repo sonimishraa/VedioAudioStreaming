@@ -24,12 +24,15 @@ class SplashActivity : AppCompatActivity() {
 
     private fun initView() {
         Handler().postDelayed({
-            if (checkLoginStatus()) {
-                val mIntent = Intent(this@SplashActivity, HomeActivity::class.java)
-                startActivity(mIntent)
+            val authToken = checkAuthtoken()
+            val loggedInStatus = checkLoginStatus()
+            if (authToken.isNullOrEmpty() && loggedInStatus) {
+                    val mIntent = Intent(this@SplashActivity, HomeActivity::class.java)
+                    startActivity(mIntent)
+                finish()
             }
             else {
-                val intent = Intent(this@SplashActivity, LoginActivity::class.java)
+                val intent = Intent(this@SplashActivity, HomeActivity::class.java)
                 startActivity(intent)
             }
         }, 500)
@@ -38,7 +41,7 @@ class SplashActivity : AppCompatActivity() {
     private fun checkAuthtoken(): String? {
          sharedPreferences =
             getSharedPreferences(getString(R.string.share_pref), Context.MODE_PRIVATE)
-        val authToken = sharedPreferences.getString(getString(R.string.sharedPref_authToken), "")
+        val authToken = sharedPreferences.getString(getString(R.string.sharedPref_authToken), " ")
         return authToken
     }
     private fun checkLoginStatus(): Boolean {
