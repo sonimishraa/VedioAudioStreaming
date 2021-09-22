@@ -46,7 +46,7 @@
         android:label="@string/menu_help"
         tools:layout="@layout/fragment_help" />
 
-    <fragment
+    <dialog
         android:id="@+id/nav_logout"
         android:name="com.tamasha.vedioaudiostreamingapp.uis.drawerfragment.LogoutFragment"
         android:label="@string/menu_logout"

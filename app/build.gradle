@@ -153,6 +153,7 @@ dependencies {
     // message retrieving service
     implementation "com.google.android.gms:play-services-auth-api-phone:17.5.1"
 
+
     // TrueCaller Sdk
     implementation "com.truecaller.android.sdk:truecaller-sdk:2.6.0"
 

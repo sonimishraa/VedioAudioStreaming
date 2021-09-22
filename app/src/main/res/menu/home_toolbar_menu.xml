@@ -5,12 +5,12 @@
         android:id="@+id/action_chat"
         android:icon="@drawable/chat_icon"
         android:title=""
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
     <item
         android:id="@+id/action_cart"
         android:icon="@drawable/cart_icon"
         android:title=""
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
    <!-- <item
         android:id="@+id/action_notifications"
         android:icon="@drawable/notification"

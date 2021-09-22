@@ -12,7 +12,7 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="73dp"
+        android:layout_marginTop="53dp"
         app:srcCompat="@drawable/tm_logo" />
 
     <TextView
@@ -72,20 +72,35 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/referral_code"
+        android:id="@+id/text_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/layout_edit_number"
         android:textColor="@color/darkGray"
-        android:text="@string/referral_code_text"
-        android:gravity="center"
-        android:padding="8dp"
+        android:text="@string/text_title"
         android:layout_marginStart="22dp"
         android:layout_marginEnd="22dp"
-        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
         android:textSize="14dp"/>
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/referral_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_title"
+        android:textColor="@color/white"
+        android:drawableStart="@drawable/ic_referral"
+        android:text="@string/referral_code"
+        android:gravity="center"
+        android:drawablePadding="8dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginTop="40dp"
+        android:textSize="14dp"/>
+
+   <!-- <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/truecaller_referral_code"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -99,35 +114,36 @@
         android:layout_marginEnd="22dp"
         android:layout_marginTop="8dp"
         android:textSize="14dp"/>
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edit_referral_code"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Referral Code (Optional)"
-            android:layout_below="@+id/truecaller_referral_code"
-            android:layout_marginStart="84dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="84dp"
-            android:padding="16dp"
-            android:visibility="gone"
-            android:textColorHint="@color/darkGray"
-            android:background="@drawable/input_text_backgroud"
-            android:textSize="14dp"
-            android:textColor="@color/white"
-            android:gravity="center"/>
-
+-->
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edit_referral_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/referral_code"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="22dp"
+        android:background="@drawable/input_text_backgroud"
+        android:gravity="start"
+        android:hint="Referral Code (Optional)"
+        android:paddingStart="22dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="12dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/darkGray"
+        android:textSize="14dp"
+        android:visibility="gone" />
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/edit_referral_code"
-        android:background="@drawable/button_backgound"
+        android:layout_below="@id/referral_code"
+        android:background="@drawable/ic_btn_background"
         android:text="@string/next"
         android:textColor="@color/white"
-        android:layout_marginStart="59dp"
-        android:layout_marginEnd="59dp"
-        android:layout_marginTop="25dp"/>
+        android:layout_marginStart="26dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginTop="137dp"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/trucaller_text"

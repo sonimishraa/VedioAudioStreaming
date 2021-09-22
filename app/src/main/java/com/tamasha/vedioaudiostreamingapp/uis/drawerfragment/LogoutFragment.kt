@@ -1,38 +1,65 @@
 package com.tamasha.vedioaudiostreamingapp.uis.drawerfragment
 
+import android.app.AlertDialog
+import android.app.Dialog
+import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import com.google.android.material.navigation.NavigationView
+import android.text.Layout
+import android.text.SpannableString
+import android.text.style.AlignmentSpan
+import android.util.Log
+import android.widget.Toast
+import androidx.fragment.app.DialogFragment
 import com.tamasha.vedioaudiostreamingapp.R
-import com.tamasha.vedioaudiostreamingapp.databinding.FragmentHomeBinding
-import com.tamasha.vedioaudiostreamingapp.databinding.FragmentLogoutBinding
-import com.tamasha.vedioaudiostreamingapp.uis.home.HomeViewModel
+import com.tamasha.vedioaudiostreamingapp.uis.LoginActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LogoutFragment : Fragment() {
+class LogoutFragment : DialogFragment() {
 
-   val homeViewModel: HomeViewModel by viewModels()
-    lateinit var binding: FragmentLogoutBinding
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentLogoutBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-        return root
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        //initView()
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        //initView()
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val builder = AlertDialog.Builder(requireContext())
+        val title = SpannableString("Logout?")
+        title.setSpan(
+            AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),
+            0,
+            title.length,
+            0
+        )
+        builder.setTitle(title)
+            .setMessage("Are you sure you want to logout?")
+            .setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, which ->
+                Toast.makeText(context, "You are Logged Out", Toast.LENGTH_SHORT).show()
+                getLoginScreen()
+
+            })
+            .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, which ->
+                // Toast.makeText(context, "Cancel Button Cliked", Toast.LENGTH_SHORT).show()
+            })
+
+        return builder.create()
+    }
+
+    private fun getLoginScreen() {
+        val sharedPreferences =
+            requireActivity().getSharedPreferences(
+                getString(R.string.share_pref),
+                Context.MODE_PRIVATE
+            )
+        val loggedInStatus = sharedPreferences.getBoolean(resources.getString(R.string.sharedPref_loginStatus), true)
+        val authToken = sharedPreferences.getString(resources.getString(R.string.sharedPref_authToken),"")
+        Log.i("LogoutFragment", "LoggedInStatus:${loggedInStatus}")
+        sharedPreferences.edit().clear().commit()
+        sharedPreferences.edit().clear().commit()
+        val intent = Intent(requireContext(), LoginActivity::class.java)
+        startActivity(intent)
     }
 
 }

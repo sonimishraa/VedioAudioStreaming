@@ -19,12 +19,11 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/colorPrimary"
+        android:background="@color/pager_card_color"
         app:itemIconPadding="16dp"
         app:itemIconSize="24dp"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
-        app:headerLayout="@layout/nav_drawer_header"
         app:menu="@menu/nav_drawer_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

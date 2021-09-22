@@ -17,6 +17,7 @@ import com.tamasha.vedioaudiostreamingapp.databinding.ActivityVerifyNumberBindin
 import com.tamasha.vedioaudiostreamingapp.model.request.NumberRegisterRequest
 import com.tamasha.vedioaudiostreamingapp.model.request.UserOtpRequest
 import com.tamasha.vedioaudiostreamingapp.model.request.VerifyOtpRequest
+import com.tamasha.vedioaudiostreamingapp.network.SMSReceiver
 import com.tamasha.vedioaudiostreamingapp.network.SmsBroadCastReceiver
 import com.tamasha.vedioaudiostreamingapp.tokennetwork.Status
 import com.tamasha.vedioaudiostreamingapp.viewmodel.LoginViewModel
@@ -30,7 +31,10 @@ const val REQUEST_USER_CONTENT = 200
 private const val TAG = "VerifyOTPActivity"
 
 @AndroidEntryPoint
-class VerifyNumberActivity : AppCompatActivity() {
+class VerifyNumberActivity : BaseActivity() {
+
+    private var intentFilter: IntentFilter? = null
+    private var smsReceiver: SMSReceiver? = null
 
     lateinit var smsBroadCastReceiver: SmsBroadCastReceiver
     lateinit var firstDigit: String
@@ -52,7 +56,7 @@ class VerifyNumberActivity : AppCompatActivity() {
         binding = ActivityVerifyNumberBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initView()
-        smartUserConsent()
+        //smartUserConsent()
         initListener()
         initObserver()
     }
@@ -72,6 +76,7 @@ class VerifyNumberActivity : AppCompatActivity() {
         binding.resendOtp.setOnClickListener {
             resendOtp()
         }
+
         binding.firstDigit.doOnTextChanged { text, start, before, count ->
             if (binding.firstDigit.text.toString().length == 1) {
                 binding.secondDigit.requestFocus()
@@ -91,6 +96,7 @@ class VerifyNumberActivity : AppCompatActivity() {
 
     private fun verifyOtp() {
         if (validateFields()) {
+            showLoading()
             val clientOtp = firstDigit + secondDigit + thirdDigit + forthDigit
             val verifyOtpRequest = VerifyOtpRequest(
                 ClientOTP = clientOtp, MobileNumber = number,
@@ -101,6 +107,7 @@ class VerifyNumberActivity : AppCompatActivity() {
     }
 
     private fun resendOtp() {
+        showLoading()
         val request =
             NumberRegisterRequest(MobileNumber = number, DeviceID = deviceId, referralCode)
         loginViewModel.registerNumberRequest(request)
@@ -108,6 +115,7 @@ class VerifyNumberActivity : AppCompatActivity() {
 
     private fun initObserver() {
         viewModel.verifyOtpResponse.observe(this, { response ->
+            dismissLoading()
             when (response.status) {
                 Status.SUCCESS -> {
                     if(response.data?.error?.code == "0") {
@@ -154,7 +162,7 @@ class VerifyNumberActivity : AppCompatActivity() {
                 Status.ERROR -> {
                     Log.e(TAG, "observeLiveData: $response")
                     Toast.makeText(
-                        this,
+                        this, 
                         response.message,
                         Toast.LENGTH_LONG
                     ).show()
@@ -164,6 +172,7 @@ class VerifyNumberActivity : AppCompatActivity() {
         })
 
         loginViewModel.userOtpResponse.observe(this, { response ->
+            dismissLoading()
             when (response.status) {
                 Status.SUCCESS -> {
                     Toast.makeText(this, "Resend OTP Successfully", Toast.LENGTH_SHORT).show()
@@ -190,49 +199,51 @@ class VerifyNumberActivity : AppCompatActivity() {
         return isAllFieldValidate
     }
 
-    private fun smartUserConsent() {
-        val client: SmsRetrieverClient = SmsRetriever.getClient(this)
-        client.startSmsUserConsent(null)
-
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_USER_CONTENT) {
-            if (resultCode == RESULT_OK && data != null) {
-                val message: String = data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE).toString()
-                getOtpFromMessage(message)
-
-            }
-        }
-    }
-
-    private fun getOtpFromMessage(message: String) {
-        val otpPattern: Pattern = Pattern.compile("(|^)\\d{4}")
-        val matcher: Matcher = otpPattern.matcher(message)
-        if (matcher.find()) {
-            matcher.group(0)
-        }
-    }
-
-    private fun registerBroadCastReceiver(
-    ) {
-        smsBroadCastReceiver =
-            SmsBroadCastReceiver(object : SmsBroadCastReceiver.smsBroadCastListener {
-                override fun onSuccess(intent: Intent) {
-                    startActivityForResult(intent, REQUEST_USER_CONTENT)
-                }
-
-                override fun onFailure() {
-                }
-            })
-        val intentFilter: IntentFilter = IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION)
-        registerReceiver(smsBroadCastReceiver, intentFilter)
-    }
-
-    override fun onStart() {
-        registerBroadCastReceiver()
-        super.onStart()
-
-    }
 }
+
+
+    /* private fun smartUserConsent() {
+         val client: SmsRetrieverClient = SmsRetriever.getClient(this)
+         client.startSmsUserConsent(null)
+
+     }
+
+     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+         super.onActivityResult(requestCode, resultCode, data)
+         if (requestCode == REQUEST_USER_CONTENT) {
+             if (resultCode == RESULT_OK && data != null) {
+                 val message: String = data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE).toString()
+                 getOtpFromMessage(message)
+
+             }
+         }
+     }
+
+     private fun getOtpFromMessage(message: String) {
+         val otpPattern: Pattern = Pattern.compile("(|^)\\d{4}")
+         val matcher: Matcher = otpPattern.matcher(message)
+         if (matcher.find()) {
+             matcher.group(0)
+         }
+     }
+
+     private fun registerBroadCastReceiver(
+     ) {
+         smsBroadCastReceiver =
+             SmsBroadCastReceiver(object : SmsBroadCastReceiver.smsBroadCastListener {
+                 override fun onSuccess(intent: Intent) {
+                     startActivityForResult(intent, REQUEST_USER_CONTENT)
+                 }
+
+                 override fun onFailure() {
+                 }
+             })
+         val intentFilter: IntentFilter = IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION)
+         registerReceiver(smsBroadCastReceiver, intentFilter)
+     }
+
+     override fun onStart() {
+         registerBroadCastReceiver()
+         super.onStart()
+
+     }*/
