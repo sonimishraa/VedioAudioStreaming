@@ -1,4 +1,4 @@
-package com.tamasha.vedioaudiostreamingapp.uis.home
+package com.tamasha.vedioaudiostreamingapp.ui.ui.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -31,10 +31,10 @@ private var _binding: FragmentHomeBinding? = null
     _binding = FragmentHomeBinding.inflate(inflater, container, false)
     val root: View = binding.root
 
-    val textView: TextView = binding.textHome
+    /*val textView: TextView = binding.textHome
     homeViewModel.text.observe(viewLifecycleOwner, Observer {
       textView.text = it
-    })
+    })*/
     return root
   }
 
