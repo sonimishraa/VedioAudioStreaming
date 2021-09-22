@@ -1,4 +1,4 @@
-package com.tamasha.vedioaudiostreamingapp.ui.ui.ui.home
+package com.tamasha.vedioaudiostreamingapp.uis.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
