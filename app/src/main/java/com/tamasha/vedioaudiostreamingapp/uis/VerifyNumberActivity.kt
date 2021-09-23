@@ -36,6 +36,7 @@ class VerifyNumberActivity : BaseActivity() {
     private var intentFilter: IntentFilter? = null
     private var smsReceiver: SMSReceiver? = null
 
+
     lateinit var smsBroadCastReceiver: SmsBroadCastReceiver
     lateinit var firstDigit: String
     lateinit var secondDigit: String
