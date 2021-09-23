@@ -56,4 +56,10 @@
     <string name="menu_help">Help</string>
     <string name="menu_logout">Logout</string>
     <string name="referral_code">Get Rs x with your friend\'s referral code.</string>
+    <string name="help_and_support">Help and Support</string>
+    <string name="faqs">FAQs</string>
+    <string name="settings">Settings</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="terms_and_conditions">Terms and Conditions</string>
+    <string name="kyc_title">Complete KYC to unlock Withdrawal</string>
 </resources>

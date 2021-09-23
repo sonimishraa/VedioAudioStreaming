@@ -32,7 +32,7 @@ class SplashActivity : AppCompatActivity() {
                 finish()
             }
             else {
-                val intent = Intent(this@SplashActivity, HomeActivity::class.java)
+                val intent = Intent(this@SplashActivity, LoginActivity::class.java)
                 startActivity(intent)
             }
         }, 500)

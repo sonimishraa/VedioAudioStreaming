@@ -36,6 +36,7 @@ class VerifyNumberActivity : BaseActivity() {
     private var intentFilter: IntentFilter? = null
     private var smsReceiver: SMSReceiver? = null
 
+
     lateinit var smsBroadCastReceiver: SmsBroadCastReceiver
     lateinit var firstDigit: String
     lateinit var secondDigit: String
@@ -53,7 +54,7 @@ class VerifyNumberActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityVerifyNumberBinding.inflate(layoutInflater)
+        binding = ActivityVerifyNuberBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initView()
         //smartUserConsent()
@@ -135,6 +136,7 @@ class VerifyNumberActivity : BaseActivity() {
                         editor.apply()
                         val intent = Intent(this, HomeActivity::class.java)
                         startActivity(intent)
+                        finish()
                     }else{
                         Toast.makeText(this, "Enter correct OTP", Toast.LENGTH_SHORT).show()
                     }

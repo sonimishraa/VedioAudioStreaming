@@ -35,10 +35,10 @@ class HomeActivity : AppCompatActivity()/*, NavigationView.OnNavigationItemSelec
     private fun initView() {
         drawerLayout = binding.drawerLayout
         val headerView = binding.navView.inflateHeaderView(R.layout.nav_drawer_header)
-        val btn_closeDrawer = headerView.findViewById<AppCompatImageView>(R.id.close_drawer)
+       /* val btn_closeDrawer = headerView.findViewById<AppCompatImageView>(R.id.close_drawer)
         btn_closeDrawer.setOnClickListener {
             drawerLayout.close()
-        }
+        }*/
     }
 
     private fun initNavigation() {

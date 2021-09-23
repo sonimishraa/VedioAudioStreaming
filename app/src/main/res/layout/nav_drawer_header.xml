@@ -6,40 +6,128 @@
     android:background="@color/pager_card_color"
     android:gravity="top">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/profile_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="34dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight=".7"
+            android:orientation="vertical">
+
+
+            <!-- <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/close_drawer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:src="@drawable/end_icon"
-        android:padding="24dp"/>
+        android:padding="24dp"/>-->
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/profile_image"
-        android:src="@mipmap/ic_launcher"
-        app:civ_border_color="@color/white"
-        android:layout_marginTop="48dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        app:civ_border_width="2dp"/>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/profile_image"
+                android:src="@mipmap/ic_launcher"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="2dp" />
 
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profile_image"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="50% Complete"
+                android:textColor="@color/white"
+                android:textSize="9dp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="21dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profile_image"
+                android:layout_marginTop="25dp"
+                android:gravity="center"
+                android:text="Soni Mishra"
+                android:textColor="@color/buttonColor"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/user_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profile_image"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="soni123"
+                android:textColor="@color/white"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/user_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profile_image"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="1234567890"
+                android:textColor="@color/white"
+                android:textSize="12dp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:id="@+id/kyc_title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Soni Mishra"
+        android:text="@string/kyc_title"
         android:gravity="center"
-        android:layout_below="@+id/profile_image"
+        android:layout_below="@+id/profile_layout"
         android:layout_marginTop="12dp"
-        android:layout_gravity="center"
-        android:layout_centerHorizontal="true"
-        android:textSize="16dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:textSize="12dp"
         android:textColor="@color/white"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_complete_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/kyc_title"
+        android:layout_marginStart="67dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="67dp"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/white"
+        android:text="COMPLETE KYC"
+        android:background="@drawable/ic_kyc_btn"/>
+
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

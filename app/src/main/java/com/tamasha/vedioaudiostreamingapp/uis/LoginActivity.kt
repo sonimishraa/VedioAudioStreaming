@@ -51,6 +51,7 @@ class LoginActivity : BaseActivity() {
     private var intentFilter: IntentFilter? = null
     private var smsReceiver: SMSReceiver? = null
 
+
     lateinit var binding: ActivityLoginBinding
     val viewModel: LoginViewModel by viewModels()
     var requestCode: Int = 1
