@@ -31,10 +31,11 @@ const val REQUEST_USER_CONTENT = 200
 private const val TAG = "VerifyOTPActivity"
 
 @AndroidEntryPoint
-class VerifyNumberActivity : AppCompatActivity() {
+class VerifyNumberActivity : BaseActivity() {
 
     private var intentFilter: IntentFilter? = null
     private var smsReceiver: SMSReceiver? = null
+
 
     lateinit var smsBroadCastReceiver: SmsBroadCastReceiver
     lateinit var firstDigit: String
@@ -76,6 +77,7 @@ class VerifyNumberActivity : AppCompatActivity() {
         binding.resendOtp.setOnClickListener {
             resendOtp()
         }
+
         binding.firstDigit.doOnTextChanged { text, start, before, count ->
             if (binding.firstDigit.text.toString().length == 1) {
                 binding.secondDigit.requestFocus()
@@ -95,6 +97,7 @@ class VerifyNumberActivity : AppCompatActivity() {
 
     private fun verifyOtp() {
         if (validateFields()) {
+            showLoading()
             val clientOtp = firstDigit + secondDigit + thirdDigit + forthDigit
             val verifyOtpRequest = VerifyOtpRequest(
                 ClientOTP = clientOtp, MobileNumber = number,
@@ -105,6 +108,7 @@ class VerifyNumberActivity : AppCompatActivity() {
     }
 
     private fun resendOtp() {
+        showLoading()
         val request =
             NumberRegisterRequest(MobileNumber = number, DeviceID = deviceId, referralCode)
         loginViewModel.registerNumberRequest(request)
@@ -112,6 +116,7 @@ class VerifyNumberActivity : AppCompatActivity() {
 
     private fun initObserver() {
         viewModel.verifyOtpResponse.observe(this, { response ->
+            dismissLoading()
             when (response.status) {
                 Status.SUCCESS -> {
                     if(response.data?.error?.code == "0") {
@@ -168,6 +173,7 @@ class VerifyNumberActivity : AppCompatActivity() {
         })
 
         loginViewModel.userOtpResponse.observe(this, { response ->
+            dismissLoading()
             when (response.status) {
                 Status.SUCCESS -> {
                     Toast.makeText(this, "Resend OTP Successfully", Toast.LENGTH_SHORT).show()

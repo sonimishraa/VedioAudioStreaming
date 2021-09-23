@@ -27,7 +27,8 @@
     <string name="terms_condition_text">We are committed to safeguarding the privacy of our Users</string>
     <string name="enter_mobile_no">Enter mobile no.</string>
     <string name="_91">+91</string>
-    <string name="referral_code_text">Do you have referral code? Click here</string>
+    <string name="text_title">By tapping Next, message and data Charges may apply.</string>
+    <style name="referral_code">Get Rs x with your friends referral code</style>
     <string name="partnerKey">AGekQ4525877e047847b4afd6fdaf9eb9b776</string>
     <string name="trucaller_text">Do you have truecaller id? Login Here</string>
     <string name="share_pref">Login_Response_SharedPref</string>
@@ -54,4 +55,5 @@
     <string name="menu_leaderboard">Leaderboard</string>
     <string name="menu_help">Help</string>
     <string name="menu_logout">Logout</string>
+    <string name="referral_code">Get Rs x with your friend\'s referral code.</string>
 </resources>

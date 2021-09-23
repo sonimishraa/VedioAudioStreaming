@@ -9,7 +9,8 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -21,165 +22,201 @@
                 android:id="@+id/back_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_arrow_back_ios_24"/>
+                android:src="@drawable/ic_baseline_arrow_back_ios_24" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Varify Your Number"
                 android:layout_marginStart="90dp"
+                android:text="Varify Your Number"
                 android:textAlignment="center"
-                android:textSize="16dp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:textSize="16dp" />
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView3"
+        android:id="@+id/verify_otp_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="Varify Your Number"
+        android:textColor="@color/white"
+        android:textSize="18dp" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layout_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/appbar"
-        android:text="We have sent you an OTP"
-        android:layout_marginTop="30dp"
-        android:textSize="18dp"
-        android:layout_marginStart="105dp"
-        android:layout_marginEnd="105dp"
-        android:gravity="center"
-        android:textColor="@color/white"/>
+        android:layout_below="@+id/verify_otp_title"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="42dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Otp sent to"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+918360036273"
+            android:layout_marginStart="4dp"
+            android:textColor="@color/buttonColor"
+            android:textSize="14dp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/edit_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:src="@drawable/edit_ic"
+            android:textColor="@color/buttonColor"
+            android:textSize="14dp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textView3"
-        android:textSize="14dp"
-        android:layout_marginTop="12dp"
-        android:textColor="@color/darkGray"
+        android:layout_below="@id/layout_number"
+        android:layout_marginTop="54dp"
         android:gravity="center"
-        android:text="enter the 4 digit OTP to proceed" />
+        android:text="enter the 4 digit OTP to proceed"
+        android:textColor="@color/darkGray"
+        android:textSize="14dp" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/layout_code"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView4"
-        android:orientation="horizontal"
-        android:layout_marginTop="65dp"
         android:layout_marginStart="59dp"
-        android:layout_marginEnd="50dp">
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="59dp"
+        android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/first_digit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/line_input_background"
             android:layout_gravity="end"
-            android:textSize="40sp"
-            android:inputType="number"
-            android:gravity="center"
-            android:maxLength="1"
             android:layout_marginEnd="14dp"
+            android:background="@drawable/ic_otp_background"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1"
             android:scrollHorizontally="true"
-            android:ellipsize="end"/>
+            android:textSize="40sp" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/second_digit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/line_input_background"
             android:layout_gravity="end"
-            android:textSize="40sp"
-            android:inputType="number"
-            android:gravity="center"
-            android:maxLength="1"
             android:layout_marginEnd="14dp"
+            android:background="@drawable/ic_otp_background"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1"
             android:scrollHorizontally="true"
-            android:ellipsize="end"/>
+            android:textSize="40sp" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/third_digit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/line_input_background"
             android:layout_gravity="end"
-            android:textSize="40sp"
-            android:inputType="number"
-            android:gravity="center"
-            android:maxLength="1"
             android:layout_marginEnd="14dp"
+            android:background="@drawable/ic_otp_background"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1"
             android:scrollHorizontally="true"
-            android:ellipsize="end"/>
+            android:textSize="40sp" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/forth_digit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/line_input_background"
             android:layout_gravity="end"
-            android:textSize="40sp"
-            android:inputType="number"
+            android:background="@drawable/ic_otp_background"
+            android:ellipsize="end"
             android:gravity="center"
+            android:inputType="number"
             android:maxLength="1"
             android:maxLines="1"
             android:scrollHorizontally="true"
-            android:ellipsize="end"/>
+            android:textSize="40sp" />
     </androidx.appcompat.widget.LinearLayoutCompat>
+
     <TextView
         android:id="@+id/resend_code_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/layout_code"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="44dp"
         android:gravity="center"
         android:text="Didn't recieve the OTP?"
-        android:textSize="14sp"
-        android:textColor="@color/darkGray"/>
+        android:textColor="@color/darkGray"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/resend_Otp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/resend_code_text"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="8dp"
         android:gravity="center"
         android:padding="4dp"
         android:text="RESEND OTP"
-        android:textSize="14dp"
-        android:textColor="@color/gray"/>
+        android:textColor="@color/gray"
+        android:textSize="14dp" />
+
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginEnd="141dp"
-        android:layout_marginStart="141dp"
         android:layout_below="@+id/resend_Otp"
-        android:background="@drawable/dotted_underline"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="141dp"
+        android:layout_marginEnd="141dp"
+        android:background="@drawable/dotted_underline" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_confirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/view"
-        android:background="@drawable/button_backgound"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/ic_btn_background"
         android:text="Confirm"
-        android:textColor="@color/white"
-        android:layout_marginStart="59dp"
-        android:layout_marginEnd="59dp"
-        android:layout_marginTop="26dp"/>
+        android:textColor="@color/white" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/terms_conditions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="We are committed to safeguarding the privacy of our Users"
-        android:textColor="@color/darkGray"
-        android:layout_marginBottom="20dp"
-        android:gravity="center"
+        android:layout_alignParentBottom="true"
         android:layout_marginStart="84dp"
         android:layout_marginEnd="84dp"
-        android:layout_alignParentBottom="true"/>
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="We are committed to safeguarding the privacy of our Users"
+        android:textColor="@color/darkGray" />
 
 
 </RelativeLayout>

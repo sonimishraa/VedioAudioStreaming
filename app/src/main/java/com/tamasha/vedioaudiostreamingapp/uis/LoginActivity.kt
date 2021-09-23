@@ -46,10 +46,11 @@ private const val TAG = "LoginActivity"
 
 const val RESOLVE_HINT = 100
 @AndroidEntryPoint
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity() {
 
     private var intentFilter: IntentFilter? = null
     private var smsReceiver: SMSReceiver? = null
+
 
     lateinit var binding: ActivityLoginBinding
     val viewModel: LoginViewModel by viewModels()
@@ -79,32 +80,14 @@ class LoginActivity : AppCompatActivity() {
 
     private fun initListener() {
         binding.referralCode.setOnClickListener {
-            binding.referralCode.visibility = View.GONE
             binding.editReferralCode.visibility = View.VISIBLE
-            binding.buttonLogin.visibility = View.VISIBLE
-            binding.trucallerText.visibility = View.GONE
-            binding.buttonTruecallerLogin.visibility = View.GONE
-        }
-        binding.trucallerText.setOnClickListener {
-            binding.trucallerText.visibility = View.GONE
-            binding.referralCode.visibility = View.GONE
-            binding.buttonLogin.visibility = View.GONE
-            binding.truecallerReferralCode.visibility = View.VISIBLE
-            binding.buttonTruecallerLogin.visibility = View.VISIBLE
-        }
-        binding.truecallerReferralCode.setOnClickListener {
-            binding.trucallerText.visibility = View.GONE
-            binding.referralCode.visibility = View.GONE
-            binding.buttonLogin.visibility = View.GONE
-            binding.truecallerReferralCode.visibility = View.GONE
-            binding.editReferralCode.visibility = View.VISIBLE
-            binding.buttonTruecallerLogin.visibility = View.VISIBLE
         }
 
         binding.buttonLogin.setOnClickListener {
             /* val intent = Intent(this, VerifyNumberActivity::class.java)
              startActivity(intent)*/
             if (validateFields()) {
+                showLoading()
                 val request =
                     NumberRegisterRequest(MobileNumber = number, DeviceID = deviceId, referralCode)
                 viewModel.registerNumberRequest(request)
@@ -154,6 +137,7 @@ class LoginActivity : AppCompatActivity() {
         })
 
         viewModel.userOtpResponse.observe(this, { response ->
+            dismissLoading()
             when (response.status) {
                 Status.SUCCESS -> {
                     /*  val data = response.data!!
