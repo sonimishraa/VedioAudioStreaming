@@ -32,4 +32,24 @@
         android:name="com.tamasha.vedioaudiostreamingapp.uis.refreshearn.RefreshEarnFragment"
         android:label="PlayFragment"
         tools:layout="@layout/fragment_refresh_earn"/>
+
+
+    <fragment
+        android:id="@+id/nav_leaderboard"
+        android:name="com.tamasha.vedioaudiostreamingapp.uis.drawerfragment.LeaderboardFragment"
+        android:label="@string/menu_leaderboard"
+        tools:layout="@layout/fragment_leaderboard" />
+
+    <fragment
+        android:id="@+id/nav_help"
+        android:name="com.tamasha.vedioaudiostreamingapp.uis.drawerfragment.HelpFragment"
+        android:label="@string/menu_help"
+        tools:layout="@layout/fragment_help" />
+
+    <dialog
+        android:id="@+id/nav_logout"
+        android:name="com.tamasha.vedioaudiostreamingapp.uis.drawerfragment.LogoutFragment"
+        android:label="@string/menu_logout"
+        tools:layout="@layout/fragment_logout" />
+
 </navigation>
