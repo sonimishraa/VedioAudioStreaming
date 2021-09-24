@@ -54,7 +54,7 @@ class VerifyNumberActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityVerifyNuberBinding.inflate(layoutInflater)
+        binding = ActivityVerifyNumberBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initView()
         //smartUserConsent()
